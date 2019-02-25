@@ -1,0 +1,18 @@
+<div class="card text-center" style="width: 50em;">
+	<div class="card-header"> 
+		<h4>{{ header }}</h4>
+	</div>
+	<div class="card-body">
+		<div class="container">
+			<div class="row">
+				<div class="col-6">
+					<button  class="btn btn-lg btn-primary btn-block" (click)="assignSchool(schools.DSHS.value)">{{ schools.DSHS.name }}</button>
+				</div>
+				<div class="col-6">
+					<button  class="btn btn-lg btn-outline-secondary btn-block" (click)="assignSchool(schools.DSMS.value)">{{ schools.DSMS.name }}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <loading></loading> -->

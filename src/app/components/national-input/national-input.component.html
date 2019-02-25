@@ -1,0 +1,29 @@
+<!-- <div *ngIf="player.school && player.status === 'RETURN'">
+	<p>{{ returningPlayerHeader }}</p>
+	<input type="text" name="nationalId" ([ngModel])="player.nationalId" (blur)="lookUp(player.nationalId)"/>
+</div>
+<div *ngIf="player.school && player.status === 'NEW'">
+	<p>{{ newPlayerHeader }}</p>
+	<input type="text" name="nationalId" ([ngModel])="player.nationalId"/>
+</div>  -->
+
+<div class="card " style="width: 50em;">
+	<div class="card-header text-center"> 
+		<h4>{{ header }}</h4>
+	</div>
+	<div class="card-body">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<form>
+						<div class="form-group">
+							<label for="nationalId">National ID Number:</label>
+							<input name="nationalId" [(ngModel)]="player.nationalId" class="form-control"  id="nationalId" (blur)="lookUp()" />
+						</div>
+					</form>
+					<app-loading *ngIf="loading"></app-loading>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

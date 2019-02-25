@@ -1,0 +1,76 @@
+<div class="card " style="width: 50em;">
+	<div class="card-header text-center"> 
+		<h4>{{ header }}</h4>
+	</div>
+	<div class="card-body">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<form #f>
+						<div class="form-group">
+							<label for="firstName">First Name:</label>
+							<input name="firstName" [(ngModel)]="player.fname" class="form-control"  id="firstName" pattern="[a-zA-Z\s]+"/>
+						</div>
+						<div class="form-group">
+							<label for="lastName">Last Name:</label>
+							<input name="lastName" [(ngModel)]="player.lname" class="form-control"  id="lastName" pattern="[a-zA-Z\s]+" />
+						</div>
+						<div class="form-group">
+							<label for="DOB">Date of Birth:</label>
+							<!-- <input name="DOB" [(ngModel)]="player.dob" class="form-control"  id="DOB" /> -->
+
+							<label for="month">Month:</label>
+							<select name="month" [(ngModel)]="player.dob.month" class="form-control" (ngModelChange)="onMonthChange(player.dob.month)">
+								<option *ngFor="let month of DOB.months" [ngValue]="month.value">{{ month.name }}</option>
+							</select>
+							<label for="day">Day:</label>
+							<select name="day" [(ngModel)]="player.dob.day" class="form-control">
+								<option *ngFor="let day of DOB.days" [ngValue]="day">{{ day }}</option>
+							</select>
+							<label for="year">Year:</label>
+							<select name="year" [(ngModel)]="player.dob.year" class="form-control">
+								<option *ngFor="let year of DOB.years" [ngValue]="year">{{ year }}</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="grade">School Grade:</label>
+							<select name="grade" [(ngModel)]="player.grade" class="form-control"  id="grade">
+								<option *ngIf="player.school == 'DSMS'" value='6'>6th</option>
+								<option *ngIf="player.school == 'DSMS'" value='7'>7th</option>
+								<option *ngIf="player.school == 'DSMS'" value='8'>8th</option>
+								<option *ngIf="player.school == 'DSHS'" value='9'>9th</option>
+								<option *ngIf="player.school == 'DSHS'" value='10'>10th</option>
+								<option *ngIf="player.school == 'DSHS'" value='11'>11th</option>
+								<option *ngIf="player.school == 'DSHS'" value='12'>12th</option>
+							</select>
+						</div>
+						<hr>
+						Address Info
+						<div class="form-group">
+							<label for="address1">Street:</label>
+							<input name="address1" [(ngModel)]="player.address.street1" class="form-control"  id="address1" pattern="[a-zA-Z0-9\s]+" />
+						</div>
+						<div class="form-group">
+							<label for="address2">Apt</label>
+							<input name="address2" [(ngModel)]="player.address.street2" class="form-control"  id="address2" pattern="[a-zA-Z0-9\s]+" />
+						</div>
+						<div class="form-group">
+							<label for="city">City:</label>
+							<input name="city" [(ngModel)]="player.address.city" class="form-control"  id="city" pattern="[a-zA-Z0-9\s]+"/>
+						</div>
+						<div class="form-group">
+							<label for="state">State: </label>
+							<select name="state" [(ngModel)]="player.address.state" class="form-control"  id="state">
+								<option *ngFor="let state of states" [ngValue]="state">{{state}}</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="zip">Zip Code: </label>
+							<input name="zip" [(ngModel)]="player.address.zip" class="form-control"  id="zip" maxlength="5" type="text" pattern="[0-9]*"/>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

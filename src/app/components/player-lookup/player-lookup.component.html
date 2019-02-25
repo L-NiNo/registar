@@ -1,0 +1,17 @@
+<div class="card text-center" style="width: 50em;">
+	<div class="card-header"> 
+		<h4>{{ header }}</h4>
+	</div>
+	<div class="card-body">
+		<div class="container">
+			<div class="row">
+				<div class="col-6">
+					<button  class="btn btn-lg btn-primary btn-block" (click)="setStatus('NEW')">New</button>
+				</div>
+				<div class="col-6">
+					<button  class="btn btn-lg btn-outline-secondary btn-block" (click)="setStatus('RETURN')">Returning</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
