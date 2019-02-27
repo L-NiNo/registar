@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { PlayerService } from '../../services/player/player.service';
-import { NgForm } from '@angular/forms'
 
 const MonthList = [
 	{ value:1, name:"January", days: 31},
@@ -17,6 +16,7 @@ const MonthList = [
 	{ value:11, name:"November", days: 30},
 	{ value:12, name:"December", days: 31}
 ]
+const emailRegex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
 
 @Component({
   selector: 'app-personal-info',
@@ -30,12 +30,12 @@ export class PersonalInfoComponent implements OnInit {
 	public returningPlayerHeader = "Verify Player Information";
 	public player;
 	public view;
-	public states = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
+	public emailPatterm = emailRegex;
 	public DOB = { days:[], months: MonthList, years:[] };
+
   constructor(private ps: PlayerService, private datePipe: DatePipe) {
   	this.ps.player.subscribe(data => {
   		if(data) this.player = data;
-  		this.player.address.state = (this.player && this.player.address && this.player.address.state)?this.player.address.state:'Texas';
   		this.header = (this.player && this.player.status == 'RETURN')?this.returningPlayerHeader:(this.player && this.player.status == 'NEW')?this.newPlayerHeader:'';
   	});
   	this.ps.view.subscribe( data => {
@@ -50,14 +50,14 @@ export class PersonalInfoComponent implements OnInit {
     this.DOB.days = days;
     // this.player.dob.day = (this.player.dob.day)?this.player.dob.day:this.DOB.days[0];
     this.player.dob.day = 0;
-    
+
     this.DOB.months = months;
     // this.player.dob.month = (this.player.dob.month)?this.player.dob.month:this.DOB.months[0].value;
     this.player.dob.month = 0;
 
     let yr = (new Date()).getFullYear() - 29;
     for (let y: number = yr; y < (new Date()).getFullYear(); y++)
-    	years.push(y); 
+    	years.push(y);
 
     this.DOB.years = years;
     // this.player.dob.year = (this.player.dob.year)?this.player.dob.year:this.DOB.years[0];
@@ -65,14 +65,15 @@ export class PersonalInfoComponent implements OnInit {
    }
 
   ngOnInit() {
-  	console.log(this.DOB);
+  	// console.log(this.DOB);
   }
-  submit(data: NgForm){
-  	console.log(data);
+  submit(){
+		this.ps.changePlayer(this.player);
+		this.ps.changeView('ADDY');
   }
   onMonthChange(month){
   	console.log(month);
-  	let numDays = MonthList[month - 1].days; 
+  	let numDays = MonthList[month - 1].days;
   	let days = [];
   	for (let i: number = 1; i < numDays + 1; i++)
     	days.push(i);
