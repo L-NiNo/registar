@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { PlayerService } from '../../services/player/player.service';
+import { NgForm } from '@angular/forms'
 
 const MonthList = [
 	{ value:1, name:"January", days: 31},
@@ -18,6 +20,7 @@ const MonthList = [
 
 @Component({
   selector: 'app-personal-info',
+  providers:[DatePipe],
   templateUrl: './personal-info.component.html',
   styleUrls: ['./personal-info.component.scss']
 })
@@ -29,7 +32,7 @@ export class PersonalInfoComponent implements OnInit {
 	public view;
 	public states = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
 	public DOB = { days:[], months: MonthList, years:[] };
-  constructor(private ps: PlayerService) {
+  constructor(private ps: PlayerService, private datePipe: DatePipe) {
   	this.ps.player.subscribe(data => {
   		if(data) this.player = data;
   		this.player.address.state = (this.player && this.player.address && this.player.address.state)?this.player.address.state:'Texas';
@@ -45,21 +48,27 @@ export class PersonalInfoComponent implements OnInit {
   	for (let i: number = 1; i < 32 + 1; i++)
     	days.push(i);
     this.DOB.days = days;
-    this.player.dob.day = (this.player.dob.day)?this.player.dob.day:this.DOB.days[0];
+    // this.player.dob.day = (this.player.dob.day)?this.player.dob.day:this.DOB.days[0];
+    this.player.dob.day = 0;
     
     this.DOB.months = months;
-    this.player.dob.month = (this.player.dob.month)?this.player.dob.month:this.DOB.months[0].value;
+    // this.player.dob.month = (this.player.dob.month)?this.player.dob.month:this.DOB.months[0].value;
+    this.player.dob.month = 0;
 
     let yr = (new Date()).getFullYear() - 29;
     for (let y: number = yr; y < (new Date()).getFullYear(); y++)
     	years.push(y); 
 
     this.DOB.years = years;
-    this.player.dob.year = (this.player.dob.year)?this.player.dob.year:this.DOB.years[0];
+    // this.player.dob.year = (this.player.dob.year)?this.player.dob.year:this.DOB.years[0];
+    this.player.dob.year = 0;
    }
 
   ngOnInit() {
   	console.log(this.DOB);
+  }
+  submit(data: NgForm){
+  	console.log(data);
   }
   onMonthChange(month){
   	console.log(month);
@@ -72,6 +81,13 @@ export class PersonalInfoComponent implements OnInit {
 
   isLeapYear(year){
  	return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+  }
+  onDobChange(){
+  	let day = this.player.dob.day;
+  	let month = this.player.dob.month;
+  	let year = this.player.dob.year;
+  	if(!year || !month ||!day) return;
+  	this.player.dob.string = this.datePipe.transform(new Date(String(day).concat('/').concat(String(month)).concat('/').concat(String(year))),'dd/MM/yyyy');
   }
 
 }

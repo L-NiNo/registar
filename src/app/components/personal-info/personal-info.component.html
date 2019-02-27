@@ -6,35 +6,60 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<form #f>
+					<ng-form #f="ngForm" (ngSubmit)=submit(f)>
 						<div class="form-group">
 							<label for="firstName">First Name:</label>
-							<input name="firstName" [(ngModel)]="player.fname" class="form-control"  id="firstName" pattern="[a-zA-Z\s]+"/>
+							<input name="firstName" [(ngModel)]="player.fname" class="form-control"  id="firstName" pattern="[a-zA-Z\s]+" maxlength="50" />
 						</div>
 						<div class="form-group">
 							<label for="lastName">Last Name:</label>
-							<input name="lastName" [(ngModel)]="player.lname" class="form-control"  id="lastName" pattern="[a-zA-Z\s]+" />
+							<input name="lastName" [(ngModel)]="player.lname" class="form-control"  id="lastName" pattern="[a-zA-Z\s]+" maxlength="50"/>
 						</div>
 						<div class="form-group">
-							<label for="DOB">Date of Birth:</label>
+							<label for="email">Email:</label>
+							<input type="email" name="email" [(ngModel)]="player.email" class="form-control"  id="email" pattern="[a-zA-Z\s]+" maxlength="250"/>
+						</div>
+						<div class="form-group">
+							<label for="DOB">Date of Birth:</label><br>
 							<!-- <input name="DOB" [(ngModel)]="player.dob" class="form-control"  id="DOB" /> -->
+							<pre>{{player.dob.string}}</pre>
+							<div class="row">
+								<div class="col-12">
+									<div class="row">
+										<div class="col-4">
+											<label for="month">Month:</label>
+											<select name="month" [(ngModel)]="player.dob.month" class="form-control" (ngModelChange)="onMonthChange(player.dob.month) && onDobChange()">
+												<option [value]='0' selected="(!player.dob.month)">-- Select --</option>
+												<option *ngFor="let month of DOB.months" [ngValue]="month.value">{{ month.name }}</option>
+											</select>
+										</div>
+									
+										<div class="col-4">
+											<label for="day">Day:</label>
+											<select name="day" [(ngModel)]="player.dob.day" class="form-control" (ngModelChange)="onDobChange()">
+												<option [value]='0' selected="(!player.dob.day)">-- Select --</option>
+												<option *ngFor="let day of DOB.days" [ngValue]="day">{{ day }}</option>
+											</select>
+										</div>									
+										<div class="col-4">
+											<label for="year">Year:</label>
+											<select name="year" [(ngModel)]="player.dob.year" class="form-control" (ngModelChange)="onDobChange()">
+												<option [value]='0' selected="(!player.dob.year)">-- Select --</option>
+												<option *ngFor="let year of DOB.years" [ngValue]="year">{{ year }}</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
 
-							<label for="month">Month:</label>
-							<select name="month" [(ngModel)]="player.dob.month" class="form-control" (ngModelChange)="onMonthChange(player.dob.month)">
-								<option *ngFor="let month of DOB.months" [ngValue]="month.value">{{ month.name }}</option>
-							</select>
-							<label for="day">Day:</label>
-							<select name="day" [(ngModel)]="player.dob.day" class="form-control">
-								<option *ngFor="let day of DOB.days" [ngValue]="day">{{ day }}</option>
-							</select>
-							<label for="year">Year:</label>
-							<select name="year" [(ngModel)]="player.dob.year" class="form-control">
-								<option *ngFor="let year of DOB.years" [ngValue]="year">{{ year }}</option>
-							</select>
+							
+							
+
 						</div>
 						<div class="form-group">
 							<label for="grade">School Grade:</label>
 							<select name="grade" [(ngModel)]="player.grade" class="form-control"  id="grade">
+								<option value=null selected="(!player.grade)">-- Select --</option>
 								<option *ngIf="player.school == 'DSMS'" value='6'>6th</option>
 								<option *ngIf="player.school == 'DSMS'" value='7'>7th</option>
 								<option *ngIf="player.school == 'DSMS'" value='8'>8th</option>
@@ -45,7 +70,7 @@
 							</select>
 						</div>
 						<hr>
-						Address Info
+						Address Info:
 						<div class="form-group">
 							<label for="address1">Street:</label>
 							<input name="address1" [(ngModel)]="player.address.street1" class="form-control"  id="address1" pattern="[a-zA-Z0-9\s]+" />
@@ -68,7 +93,10 @@
 							<label for="zip">Zip Code: </label>
 							<input name="zip" [(ngModel)]="player.address.zip" class="form-control"  id="zip" maxlength="5" type="text" pattern="[0-9]*"/>
 						</div>
-					</form>
+						<div class="form-group">
+							<button name="submit" value="submit" class="btn btn-lg btn-primary btn-block" ngDisabled="f.valid"></button>
+						</div>
+					</ng-form>
 				</div>
 			</div>
 		</div>
