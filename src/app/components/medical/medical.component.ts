@@ -26,4 +26,12 @@ export class MedicalComponent implements OnInit {
   ngOnInit() {
   }
 
+  submit(){
+    this.ps.changePlayer(this.player);
+    this.ps.changeView('CONSENT');
+  }
+
+  back(){
+    this.ps.changeView('EMERGANCY');
+  }
 }

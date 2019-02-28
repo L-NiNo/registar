@@ -26,4 +26,13 @@ export class GuardianComponent implements OnInit {
   ngOnInit() {
   }
 
+  submit(){
+    this.ps.changePlayer(this.player);
+    this.ps.changeView('EMERGANCY');
+  }
+
+  back(){
+    this.ps.changeView('ADDY');
+  }
+
 }

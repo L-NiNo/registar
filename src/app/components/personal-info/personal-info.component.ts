@@ -1,22 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { PlayerService } from '../../services/player/player.service';
-
-const MonthList = [
-	{ value:1, name:"January", days: 31},
-	{ value:2, name:"February", days: 28},
-	{ value:3, name:"March", days: 31},
-	{ value:4, name:"April", days: 30},
-	{ value:5, name:"May", days: 31},
-	{ value:6, name:"June", days: 30},
-	{ value:7, name:"July", days: 31},
-	{ value:8, name:"August", days: 31},
-	{ value:9, name:"September", days: 30},
-	{ value:10, name:"October", days: 31},
-	{ value:11, name:"November", days: 30},
-	{ value:12, name:"December", days: 31}
-]
-const emailRegex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
+import { MonthList } from '../../classes/months';
+import { RegexSettings } from '../../classes/regexes';
 
 @Component({
   selector: 'app-personal-info',
@@ -30,7 +16,7 @@ export class PersonalInfoComponent implements OnInit {
 	public returningPlayerHeader = "Verify Player Information";
 	public player;
 	public view;
-	public emailPatterm = emailRegex;
+	public emailPatterm = RegexSettings.email.pattern;
 	public DOB = { days:[], months: MonthList, years:[] };
 
   constructor(private ps: PlayerService, private datePipe: DatePipe) {
@@ -79,10 +65,11 @@ export class PersonalInfoComponent implements OnInit {
     	days.push(i);
     this.DOB.days = days;
   }
-
+	// TODO: account for leap years if propper year is selected
   isLeapYear(year){
- 	return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+ 		return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
   }
+
   onDobChange(){
   	let day = this.player.dob.day;
   	let month = this.player.dob.month;

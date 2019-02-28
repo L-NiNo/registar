@@ -1,3 +1,23 @@
-<p>
-  text works!
-</p>
+<div class="form-group">
+	<div [ngClass]="inputClass">
+        <input type="text"
+          name = "{{ name }}"
+          [(ngModel)]="model"
+          [ngClass]="classes"
+          id="{{ id || type}}"
+          appValidationHelper="{{type}}"
+          appPostalCode
+          required="{{required}}"
+          pattern="{{pattern}}"
+          maxlength="{{max}}"
+          minlength="{{min}}"
+          placeholder="{{placeholder}}"
+          (focus)="onFocus()"
+          (blur)="onBlur()"
+          (ngModelChange)="modelChange.emit($event)"
+          #ctrl='ngModel'/>
+			<app-text-error [errors]="ctrl.errors" [lostFocus]="lostFocus"></app-text-error>
+	</div>
+  <!-- <pre>VALUE: {{ ctrl.value | json}}</pre> -->
+  <!-- <pre>ERRORS: {{ ctrl.errors | json}}</pre> -->s
+</div>

@@ -26,4 +26,12 @@ export class EmergencyComponent implements OnInit {
   ngOnInit() {
   }
 
+  submit(){
+    this.ps.changePlayer(this.player);
+    this.ps.changeView('MED');
+  }
+
+  back(){
+    this.ps.changeView('GUARD');
+  }
 }
