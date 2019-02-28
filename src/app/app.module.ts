@@ -11,6 +11,15 @@ import { PlayerService } from './services/player/player.service';
 import { NationalInputComponent } from './components/national-input/national-input.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { PersonalInfoComponent } from './components/personal-info/personal-info.component';
+import { AddressComponent } from './components/address/address.component';
+import { MedicalComponent } from './components/medical/medical.component';
+import { ConsentsComponent } from './components/consents/consents.component';
+import { GuardianComponent } from './components/guardian/guardian.component';
+import { EmergencyComponent } from './components/emergency/emergency.component';
+import { TextComponent } from './components/text/text.component';
+import { ValidationHelperDirective } from './directives/validation.directive';
+import { ReviewComponent } from './components/review/review.component';
+import { TextErrorComponent } from './components/text-error/text-error.component';
 
 
 
@@ -21,7 +30,16 @@ import { PersonalInfoComponent } from './components/personal-info/personal-info.
     PlayerLookupComponent,
     NationalInputComponent,
     LoadingComponent,
-    PersonalInfoComponent
+    PersonalInfoComponent,
+    AddressComponent,
+    MedicalComponent,
+    ConsentsComponent,
+    GuardianComponent,
+    EmergencyComponent,
+    TextComponent,
+    ValidationHelperDirective,
+    ReviewComponent,
+    TextErrorComponent
   ],
   imports: [
     BrowserModule,
