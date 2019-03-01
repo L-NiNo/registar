@@ -12,8 +12,8 @@ import { RegexSettings } from '../../classes/regexes';
 })
 export class PersonalInfoComponent implements OnInit {
 	public header;
-	public newPlayerHeader = "Enter Player Information";
-	public returningPlayerHeader = "Verify Player Information";
+  private newPlayerHeader = "Enter Player Information";
+	private returningPlayerHeader = "Verify Player Information";
 	public player;
 	public view;
 	public emailPatterm = RegexSettings.email.pattern;

@@ -28,7 +28,7 @@ export class GuardianComponent implements OnInit {
 
   submit(){
     this.ps.changePlayer(this.player);
-    this.ps.changeView('EMERGANCY');
+    this.ps.changeView('EMERGENCY');
   }
 
   back(){

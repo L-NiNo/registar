@@ -10,7 +10,7 @@ const declaredType = 'postalCode';
 export class PostalCodeDirective {
 
   	regexes:any;
-    	constructor(private locale: LocalizationService) {
+    	constructor() {
     		this.regexes = RegexSettings;
     	}
 

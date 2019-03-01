@@ -13,7 +13,7 @@ import { ControlContainer, NgForm } from '@angular/forms';
 * --- parent form is async from html #form="ngForm"
 */
 
-export class TextComponent implements OnInit {
+export class TextComponent implements OnInit { 
 
 	@Output() modelChange:EventEmitter<string> = new EventEmitter<string>();
 	@Input() model; // Binding to parent variable

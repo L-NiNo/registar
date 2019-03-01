@@ -7,20 +7,20 @@ import { PlayerService } from '../../services/player/player.service';
   styleUrls: ['./select-school.component.scss']
 })
 export class SelectSchoolComponent implements OnInit {
-  public schools = { 
-    DSHS: { 
-        name: 'High School', 
-        value: 'DSHS' 
-    }, 
-    DSMS: { 
+  public schools = {
+    DSHS: {
+        name: 'High School',
+        value: 'DSHS'
+    },
+    DSMS: {
         name: "Middle School",
-        value: "DSMS" 
+        value: "DSMS"
     }
   };
   public player;
   public view;
   public header = "What school does the player attent?";
-  constructor(private ps: PlayerService) { 
+  constructor(private ps: PlayerService) {
     this.ps.player.subscribe(data => {
       if(data) this.player = data;
     });
@@ -35,9 +35,9 @@ export class SelectSchoolComponent implements OnInit {
   assignSchool(val){
       if(!val) return;
       // console.log(val);
-      if(this.player) { 
+      if(this.player) {
         this.player.school = val;
-        this.ps.changePlayer(this.player); 
+        this.ps.changePlayer(this.player);
         this.ps.changeView('NAT_ID');
       }
   }

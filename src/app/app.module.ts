@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { SelectSchoolComponent } from './components/select-school/select-school.component';
 import { PlayerLookupComponent } from './components/player-lookup/player-lookup.component';
 import { PlayerService } from './services/player/player.service';
+import { HeaderService } from './services/header/header.service';
 import { NationalInputComponent } from './components/national-input/national-input.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { PersonalInfoComponent } from './components/personal-info/personal-info.component';
@@ -47,7 +48,7 @@ import { TextErrorComponent } from './components/text-error/text-error.component
     FormsModule,
     ButtonsModule.forRoot()
   ],
-  providers: [ PlayerService ],
+  providers: [ PlayerService, HeaderService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

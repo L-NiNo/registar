@@ -11,7 +11,7 @@ export class PlayerLookupComponent implements OnInit {
 	public view;
   public header = "Are you a new or returning player to Dripping Springs Girls Lacrosse?";
 
-  constructor(private ps: PlayerService) { 
+  constructor(private ps: PlayerService) {
   	this.ps.player.subscribe(data => {
   		if(data) this.player = data;
   	});

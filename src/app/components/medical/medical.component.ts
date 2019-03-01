@@ -32,6 +32,6 @@ export class MedicalComponent implements OnInit {
   }
 
   back(){
-    this.ps.changeView('EMERGANCY');
+    this.ps.changeView('EMERGENCY');
   }
 }
