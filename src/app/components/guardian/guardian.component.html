@@ -6,38 +6,43 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<form #form="ngForm" (ngSubmit)=submit(form) autocomplete="off">
-						Address Info:
-            <hr>
+					<form #form="ngForm" autocomplete="off">
+						Parent/Guardian Info:
+						<hr>
 						<div class="form-group">
-							<label for="address1">Street:</label>
-							<input name="address1" [(ngModel)]="player.address.street1" class="form-control"  id="address1" pattern="[a-zA-Z0-9\s]+" />
+							<label for="guardian">*Parent/Guardian: </label>
+							<input name="guardian" [(ngModel)]="player.guardian.primary.name" class="form-control"  id="guardian" pattern="[a-zA-Z0-9\s]+" />
 						</div>
 						<div class="form-group">
-							<label for="address2">Apt</label>
-							<input name="address2" [(ngModel)]="player.address.street2" class="form-control"  id="address2" pattern="[a-zA-Z0-9\s]+" />
+							<label for="cell">*Cell#: </label>
+							<input name="cell" [(ngModel)]="player.guardian.primary.cell" class="form-control"  id="cell" pattern="[a-zA-Z0-9\s]+" />
 						</div>
 						<div class="form-group">
-							<label for="city">City:</label>
-							<input name="city" [(ngModel)]="player.address.city" class="form-control"  id="city" pattern="[a-zA-Z0-9\s]+"/>
+							<label for="email">*Primary Email :</label>
+							<input name="email" [(ngModel)]="player.guardian.primary.email" class="form-control"  id="email" pattern="[a-zA-Z0-9\s]+"/>
 						</div>
 						<div class="form-group">
-							<label for="state">State: </label>
-							<select name="state" [(ngModel)]="player.address.state" class="form-control"  id="state">
-								<option *ngFor="let state of states" [ngValue]="state">{{state}}</option>
-							</select>
+							<input type="checkbox" [checked]="secondary" (change)="secondary = !secondary"/>
+							<label for="cell">Add Secondary? (optional)</label>
 						</div>
-						<div class="form-group">
-							<label for="zip">Zip Code: </label>
-							<input name="zip" [(ngModel)]="player.address.zip" class="form-control"  id="zip" maxlength="5" type="text" pattern="[0-9]*"/>
+						<div *ngIf="secondary">
+							<div class="form-group">
+								<label for="constact">Parent/Guardian: </label>
+								<input name="contact" [(ngModel)]="player.guardian.secondary.name" class="form-control"  id="contact" pattern="[a-zA-Z0-9\s]+" />
+							</div>
+							<div class="form-group">
+								<label for="cell2">Cell# :</label>
+								<input name="cell2" [(ngModel)]="player.guardian.secondary.cell" class="form-control"  id="cell2" pattern="[a-zA-Z0-9\s]+"/>
+							</div>
 						</div>
+						<small><i>* indicates required</i></small>
 						<div class="form-group">
               <div class="row">
                 <div class="col-6">
                   <button name="back" value="submit" class="btn btn-lg btn-secondary btn-block" (click)="back()">Back</button>
                 </div>
                 <div class="col-6">
-                  <button name="submit" value="submit" class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid">Next</button>
+                  <button name="submit" value="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid">Next</button>
                 </div>
               </div>
 						</div>

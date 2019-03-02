@@ -1,0 +1,20 @@
+<div *ngIf="lostFocus">
+    <div *ngIf="errors" style="color:red">
+      <div *ngIf="errors.minlength">
+        <small>Minimum length not met</small>
+      </div>
+
+      <div *ngIf="errors.maxlength">
+        <small>Exceeded maximum length</small>
+      </div>
+
+      <div *ngIf="errors.pattern">
+        <small>Invalid Input</small>
+      </div>
+
+      <div *ngIf="errors.required">
+        <small>Field is required</small>
+      </div>
+    </div>
+</div>
+<!-- <pre>ERRORS: {{ errors | json}}</pre> -->
