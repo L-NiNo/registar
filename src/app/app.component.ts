@@ -37,10 +37,10 @@ export class AppComponent implements OnInit {
 	  	school:null,
 	  	grade: null,
 	  	year:'',
-	  	emergancyInfo: {},
+	  	emergency: { primary: {}, secondary: {}},
 	  	consents:{},
 	  	medical:{},
-	  	gaurdian:{}
+	  	guardian:{ primary: {}, secondary: {}}
 	  };
 	  this.ps.changePlayer(player);
 	  // console.log(this);

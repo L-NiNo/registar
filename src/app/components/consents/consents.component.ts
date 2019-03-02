@@ -26,4 +26,12 @@ export class ConsentsComponent implements OnInit {
   ngOnInit() {
   }
 
+  submit(){
+    this.ps.changePlayer(this.player);
+    this.ps.changeView('REVIEW');
+  }
+
+  back(){
+    this.ps.changeView('MEDICAL');
+  }
 }
