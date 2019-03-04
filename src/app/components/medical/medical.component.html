@@ -30,8 +30,8 @@
 							<input name="callNum" [(ngModel)]="player.medical.callNum" class="form-control"  id="callNum" maxlength="11" type="text" pattern="[0-9]*"/>
 						</div>
 						<div class="form-group">
-							<label for="allergiess">Allergies: </label>
-							<input name="allergiess" [(ngModel)]="player.medical.allergiess" class="form-control"  id="allergiess" maxlength="100" type="text" pattern="[a-zA-Z0-9\s]+"/>
+							<label for="allergies">Allergies: </label>
+							<input name="allergies" [(ngModel)]="player.medical.allergies" class="form-control"  id="allergies" maxlength="100" type="text" pattern="[a-zA-Z0-9\s]+"/>
 							<i>Insert N/A if none</i>
 						</div>
 						<div class="form-group">
@@ -50,7 +50,8 @@
                   <button name="back" value="submit" class="btn btn-lg btn-secondary btn-block" (click)="back()">Back</button>
                 </div>
                 <div class="col-6">
-                  <button name="submit" value="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid">Next</button>
+                  <button name="submit" value="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block">Next</button>
+                  <!-- <button name="submit" value="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid">Next</button> -->
                 </div>
               </div>
 						</div>

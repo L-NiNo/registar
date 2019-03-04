@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 export class PlayerService {
 
 	private _player = new BehaviorSubject<any>(null);
+  // private _view = new BehaviorSubject<any>('CONSENT');
 	private _view = new BehaviorSubject<any>('INIT');
 	
 	public player = this._player.asObservable();

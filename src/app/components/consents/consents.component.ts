@@ -8,15 +8,14 @@ import { PlayerService } from '../../services/player/player.service';
 })
 export class ConsentsComponent implements OnInit {
   public header;
-  public newPlayerHeader = "Enter Player Information";
-  public returningPlayerHeader = "Verify Player Information";
+  public consentHeader = "Terms & Conditions Agreement";
   public player;
   public view;
-
+  marked = false;
   constructor(private ps: PlayerService) {
     this.ps.player.subscribe(data => {
       if(data) this.player = data;
-      this.header = (this.player && this.player.status == 'RETURN')?this.returningPlayerHeader:(this.player && this.player.status == 'NEW')?this.newPlayerHeader:'';
+      this.header = this.consentHeader;
     });
     this.ps.view.subscribe( data => {
       if(data) this.view = data;
@@ -33,5 +32,9 @@ export class ConsentsComponent implements OnInit {
 
   back(){
     this.ps.changeView('MEDICAL');
+  }
+
+  toggleVisibility(e){
+    this.marked= e.target.checked;
   }
 }

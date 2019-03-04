@@ -3,33 +3,40 @@
 		<h4>{{ header }}</h4>
 	</div>
 	<div class="card-body">
-		<div class="container">
+		<div class="container-flex">
 			<div class="row">
 				<div class="col-12">
 					<form #form="ngForm" autocomplete="off">
-            <h4>We authorize a DSHS Girls Lacrosse representative:</h4>
-            <div class="form-group">
-							<input type="checkbox" [checked]="player.consent.one" (change)="player.consent.one = !player.consent.one"/>
-						</div>
-            <ul>
-              <li>1. To represent us before any medical institute where it may be necessary to send our daughter while she is under care. </li>
-              <li>2. To give, in our name, the necessary authorization for diagnostic, X-Ray and/or operative procedures in case of emergency, when medical authorities deem it indispensable, and all attempts have been made to contact the parents and the emergency contact person. </li>
-              <li>3. To represent us while she is under custody. </li>
-              <li>4. To authorize the release of medical records and information as well as medical insurance information to the DSISD athletic trainer, coaches and Healthcare providers as needed for treatment of injuries and illness to my daughter.</li>
-            </ul>
+
+            <label  class="container"> 
+              <input type="checkbox" name="one" [(ngModel)]="player.consents.one"  data-md-icheck (change)="toggleVisibility($event)" required />
+                  <b>We authorize a DSHS Girls Lacrosse representative:</b>
+                <span class="checkmark"></span>
+            </label>
+            <!-- {{ player.consents.one }} -->
+            <ol>
+              <li>To represent us before any medical institute where it may be necessary to send our daughter while she is under care. </li>
+              <li>To give, in our name, the necessary authorization for diagnostic, X-Ray and/or operative procedures in case of emergency, when medical authorities deem it indispensable, and all attempts have been made to contact the parents and the emergency contact person. </li>
+              <li>To represent us while she is under custody. </li>
+              <li>To authorize the release of medical records and information as well as medical insurance information to the DSISD athletic trainer, coaches and Healthcare providers as needed for treatment of injuries and illness to my daughter.</li>
+            </ol>
             <hr>
-            <h4>DSHS Girls Lacrosse 2018-2019 WAIVER OF LIABILITY</h4>
-            <div class="form-group">
-							<input type="checkbox" [checked]="player.consent.two" (change)="player.consent.two = !player.consent.two"/>
-						</div>
+            <label  class="container"> 
+              <input type="checkbox" name="one" [(ngModel)]="player.consents.two"  data-md-icheck (change)="toggleVisibility($event)" required/>
+                  <b>DSHS Girls Lacrosse {{ player.year }} WAIVER OF LIABILITY</b>
+                <span class="checkmark"></span>
+            </label>
+            <!-- {{ player.consents.two }} -->
             <ul>
               <p>In consideration of participating on the DSHS Girls lacrosse team, the player named below and the parent or guardian do hereby agree for ourselves, our heirs, executors and administrators, to release, hold harmless and forever discharge, DSHS Girls Lacrosse, DSHS High School,  their officers, staff, administrators, volunteers, sponsors and representatives and assigns, for and against any and all claims, actions, cause of actions, suits, judgments, and demands whatsoever arising directly or indirectly in connection with the player’s participation on the DSHS Girls Lacrosse team. I am fully aware and appreciate the risks, including the risk of a catastrophic injury, paralysis and even death, as well as other damages and losses associated with participation in a lacrosse event. By signing below, I acknowledge that I have read and understand this form and further understand the terms herein are contractual and not a mere recital.</p>
             </ul>
             <hr>
-            <h4>2018-2019 DSHS Girl’s Lacrosse Code of Conduct</h4>
-            <div class="form-group">
-							<input type="checkbox" [checked]="player.consent.three" (change)="player.consent.three = !player.consent.three"/>
-						</div>
+            <label  class="container"> 
+              <input type="checkbox" name="one" [(ngModel)]="player.consents.three"  data-md-icheck (change)="toggleVisibility($event)" required/>
+                  <b>{{ player.year }} DSHS Girl’s Lacrosse Code of Conduct</b>
+                <span class="checkmark"></span>
+            </label>
+            <!-- {{ player.consents.three }} -->
             <ul>
               <p>The DSHS Girls Lacrosse TEAM code of conduct goes along with the TGHSLL Code of Conduct provided by our central Texas district -CTGHSLL- and also follows UIL guidelines for several items. By checking this form, you the player agrrees to.</p>
               <li>Allow our teams’ authorized teacher representative in the DSISD, to check player’s grades. DSHS Girl’s Lacrosse will follow UIL policies for passing classes at the end of each grading period by a grade of 70 to be eligible to play the next 3 weeks games. If a player is ineligible they will still be required to participate in weekly practices and be present for games, they will just not be able to play in any game until the next grading period starts and their grade raises above a 69.9.</li>
@@ -40,28 +47,35 @@
             </ul>
 
             <hr>
-            <h4>Texas Girls High School Lacrosse League Code of Conduct</h4>
-            <div class="form-group">
-							<input type="checkbox" [checked]="player.consent.four" (change)="player.consent.four = !player.consent.four"/>
-						</div>
+            <label  class="container"> 
+              <input type="checkbox" name="one" [(ngModel)]="player.consents.four"  data-md-icheck (change)="toggleVisibility($event)" required/>
+                  <b>Texas Girls High School Lacrosse League Code of Conduct</b>
+                <span class="checkmark"></span>
+            </label>
+            <!-- {{ player.consents.four }} -->
             <ul>
               <p>TGHSLL Code of Conduct Objective: To promote sportsmanship, fair play and respect for all members of the Texas Girls High School Lacrosse League. The Code of Conduct:  All TGHSLL members should play in the spirit of the game.  All TGHSLL members are to HONOR the game. Each person should respect the rules of the game and treat officials, opponents, teammates and coaches with respect.  The value of winning shall never be placed above the value of instilling the highest ideals of character.  The head coach shall act in a courteous manner and also shall endeavor in every way to achieve the same from players, coaches and parents.  One of the team’s coaches shall be designated the head coach. The head coach is responsible for making all decisions for that team not delegated specifically to the team’s game captain. It is the head coach’s responsibility to see that players and substitutes are equipped properly, both mentally and physically, to play.  Coaches are responsible for controlling their players, spectators and any other persons associated with their program.  Abusive, profane or violent behavior or language by coaches, players or fans at any League function will not be tolerated at any TGHSLL event. Behavior in this manner may result in member suspension or expulsion from participation or attendance at any League game or activity. The Conduct Committee(s) shall decide suspension or expulsion.  No alcoholic beverages or any intoxicating substances or intoxicated individuals are allowed at any League function.  A player must not conduct him/herself in a rough, dangerous or unsportsmanlike manner. Please see TGHSLL Girls Bylaws for enforcement of unsportsmanlike conduct. ALL listed below MUST sign and date this and deliver it to your District VicePresident No Later then TWO weeks prior to the first regular season game. Failure to do so will result in forfeiture of any regular season games until received by the Vice-President.</p>
             </ul>
 
             <hr>
-            <h4>I agree to pay all registration fees in full by the date specified by the team administrators (please see below at bottom of page)</h4>
-            <div class="form-group">
-							<input type="checkbox" [checked]="player.consent.five" (change)="player.consent.five = !player.consent.five"/>
-						</div>
+            <label  class="container"> 
+              <input type="checkbox" name="five" [(ngModel)]="player.consents.five"  data-md-icheck (change)="toggleVisibility($event)" required/>
+                  <b>Fees / Dues Agreement</b>
+                <span class="checkmark"></span>
+            </label>
+            <!-- {{ player.consents.five }} -->
             <ul>
+              <p>I agree to pay all registration fees in full by the date specified by the team administrators</p>
               <p>Payments are required at this time but if you wish to make a payment please visit our website www.DrippingSpringsGirlsLax.org where you can make full or partial payments. Full registration fees are due by first day of practice, September 14, 2018.</p>
             </ul>
 
             <hr>
-            <h4>Photograph / Video Release</h4>
-            <div class="form-group">
-							<input type="checkbox" [checked]="player.consent.six" (change)="player.consent.six = !player.consent.six"/>
-						</div>
+            <label  class="container"> 
+              <input type="checkbox" name="six" [(ngModel)]="player.consents.six"  data-md-icheck (change)="toggleVisibility($event)" required/>
+                  <b>Photograph / Video Release</b>
+                <span class="checkmark"></span>
+            </label>
+            <!-- {{ player.consents.six }} -->
             <ul>
               <li>I give Dripping Springs Girls Lacrosse permission to take photographs and / or video.</li>
               <li>I grant full rights to use the images resulting from the photography/video filming, and any reproductions or adaptations of the images for fundraising, publicity or other purposes to help achieve the group’s aims. This might include (but is not limited to), the right to use them in their printed and online publicity, social media, press releases and funding applications</li>

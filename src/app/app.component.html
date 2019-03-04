@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="row">
+  <div *ngIf="!isRegOpen()" class="row">
     <div class="col">
       <div *ngIf="view == 'INIT'">
         <player-lookup></player-lookup>
@@ -31,6 +31,12 @@
       <div *ngIf="view =='REVIEW'">
         <app-review></app-review>
       </div>
+    </div>
+  </div>
+  <div *ngIf="isRegOpen()">
+    <div class="alert alert-danger" role="alert">
+      <i class="fas fa-exclamation-triangle"></i>
+      We're sorry, registration for the next season isn't open until July! Please then to registar.
     </div>
   </div>
 </div>

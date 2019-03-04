@@ -19,7 +19,7 @@
 						</div>
 						<div class="form-group">
 							<label for="cell">*Cell# :</label>
-							<input name="cell" [(ngModel)]="player.emergency.primary.cell" class="form-control"  id="cell" pattern="[a-zA-Z0-9\s]+"/>
+							<input name="cell" [(ngModel)]="player.emergency.primary.phone" class="form-control"  id="cell" pattern="[a-zA-Z0-9\s]+"/>
 						</div>
 						<div class="form-group">
 							<input type="checkbox" [checked]="secondary" (change)="secondary = !secondary"/>
@@ -35,8 +35,8 @@
 								<input name="relationship" [(ngModel)]="player.emergency.secondary.relationship" class="form-control"  id="relationship" pattern="[a-zA-Z0-9\s]+" />
 							</div>
 							<div class="form-group">
-								<label for="cell">Cell# :</label>
-								<input name="cell" [(ngModel)]="player.emergency.secondary.cell" class="form-control"  id="cell" pattern="[a-zA-Z0-9\s]+"/>
+								<label for="cell2">Cell# :</label>
+								<input name="cell2" [(ngModel)]="player.emergency.secondary.phone" class="form-control"  id="cell2" pattern="[a-zA-Z0-9\s]+"/>
 							</div>
 						</div>
 						<small><i>* indicates required</i></small>

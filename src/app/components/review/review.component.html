@@ -1,3 +1,219 @@
-<p>
-  review works!
-</p>
+<div class="col card " style="width: 50em;">
+  <div class="card-header text-center">
+    <h4>{{ header }}</h4>
+  </div>
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <h5 class="col-10">Player Info:</h5>
+            <div class="col-2">
+              <button class="btn btn-outline-info" (click)="returnTo('PI')">Edit</button>
+            </div>
+          </div>
+          <p>
+            <span class="row">
+              <span class="col-md-1"></span>
+              <span class="col-md-11">
+                <b>Name: </b>{{ player.fname }} {{ player.lname }}
+              </span>
+              <span class="col-md-1"></span>
+              <span class="col-md-11">
+                <b>Email: </b>{{ player.email }}
+              </span>
+              <span class="col-md-1"></span>
+              <span class="col-md-11">
+                <b>Date of Birth: </b>{{ player.dob.string }}
+              </span>
+            </span>
+          </p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <h5 class="col-10">Player Address:</h5>
+            <div class="col-2">
+              <button class="btn btn-outline-info" (click)="returnTo('ADDY')">Edit</button>
+            </div>
+          </div>
+          <p>
+            <span class="row">
+              <span class="col-md-1"></span>
+              <span class="col-md-11">{{ player.address.street1 }} {{ player.address.street2 }}</span>
+              <span class="col-md-1"></span>
+              <span class="col-md-11">{{ player.address.city }} {{ player.address.state }}, {{ player.address.zip }} </span>
+            </span>
+          </p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <h5 class="col-10">Guardian:</h5>
+            <div class="col-2">
+              <button class="btn btn-outline-info" (click)="returnTo('GUARD')">Edit</button>
+            </div>
+          </div>
+          <p>
+            <span class="row">
+              <span class="col-md-1"></span>
+              <span class="col-md-4 pb-2">
+                <span class="row">
+                  <span class="col">
+                    <b>Guardian#1: </b>{{ player.guardian.primary.name }}
+                  </span>
+                </span>
+                <span class="row">
+                  <span class="col">
+                    <b>Email: </b>{{ player.guardian.primary.email }}
+                  </span>
+                </span>
+                <span class="row">
+                  <span class="col">
+                    <b>Phone: </b>{{ player.guardian.primary.phone }}
+                  </span>
+                </span>
+              </span>
+              <span class="col-md-4" *ngIf="player.guardian.secondary.name">
+                <span class="row">
+                  <span class="col"><b>Guardian#2: </b>{{ player.guardian.secondary.name }}
+                  </span>
+                </span>
+                <span class="row">
+                  <span class="col"><b>Phone: </b>{{ player.guardian.secondary.phone }}
+                  </span>
+                </span>
+              </span>
+            </span>
+            <br>
+          </p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <h5 class="col-10">Emergency Contact:</h5>
+            <div class="col-2">
+              <button class="btn btn-outline-info" (click)="returnTo('EMERGENCY')">Edit</button>
+            </div>
+          </div>
+          <p>
+            <span class="row">
+              <span class="col-md-1"></span>
+              <span class="col-md-4 pb-2">
+                <span class="row">
+                  <span class="col">
+                    <b>Contact#1: </b><span>{{ player.emergency.primary.name }}</span>
+                  </span>
+                </span>
+                <span class="row">
+                  <span class="col">
+                    <b>Relationship: </b><span>{{ player.emergency.primary.relationship }}</span>
+                  </span>
+                </span>
+                <span class="row">
+                  <span class="col">
+                    <b>Phone: </b><span>{{ player.emergency.primary.phone }}</span>
+                  </span>
+                </span>
+              </span>
+              <br>
+              <span class="col-md-4" *ngIf="player.emergency.secondary.name">
+                <span class="row">
+                  <span class="col">
+                    <b>Contact#2: </b><span>{{ player.emergency.secondary.name }}</span>
+                  </span>
+                </span>
+                <span class="row">
+                  <span class="col">
+                    <b>Relationship: </b><span>{{ player.emergency.secondary.relationship }}</span>
+                  </span>
+                </span>
+                <span class="row">
+                  <span class="col">
+                    <b>Phone: </b><span>{{ player.emergency.secondary.phone }}</span>
+                  </span>
+                </span>
+              </span>
+            </span>
+            <br>
+          </p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <h5 class="col-10">Medical:</h5>
+            <div class="col-2">
+              <button class="btn btn-outline-info" (click)="returnTo('MED')">Edit</button>
+            </div>
+          </div>
+          <p>
+            <span class="row">
+              <span class="col-md-1"></span>
+              <span class="col-md-4 pb-2">
+                <span class="row">
+                  <span class="col">
+                    <b>Physician: </b>{{ player.medical.physician }}
+                  </span>
+                </span>
+                <span class="row">
+                  <span class="col">
+                    <b>Phone: </b>{{player.medical.physicianNum}}
+                  </span>
+                </span>
+              </span>
+              <span class="col-md-4 pb-2">
+                <span class="row">
+                  <span class="col">
+                    <b>Insurance: </b>{{ player.medical.insurance }}
+                  </span>
+                </span>
+                <span class="row">
+                  <span class="col">
+                    <b>Policy#: </b>{{ player.medical.policy }}
+                  </span>
+                </span>
+                <span class="row">
+                  <span class="col">
+                    <b>Phone: </b>{{ player.medical.callNum}}
+                  </span>
+                </span>
+              </span>
+          	</span>
+            <br>
+	          <span class="row">
+	            <span class="col-md-1"></span>
+	            <span class="col-md-11">
+	            	<b>Alergies: </b>{{ player.medical.allergies }} 
+	            </span>
+	            <span class="col-md-1"></span>
+	            <span class="col-md-11">
+	            	<b>Medical Conditions: </b>{{ player.medical.conditions }} 
+	            </span>
+	            <span class="col-md-1"></span>
+	            <span class="col-md-11">
+	            	<b>Medications: </b>{{ player.medical.medications }} 
+	            </span>
+	          </span>
+          </p>
+        </div>
+      </div>
+      <div class="form-group">
+		<div class="row">
+			<div class="col"></div>
+			<div class="col">
+				<button name="submit" value="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block">Submit</button>
+				<!-- <button name="submit" value="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid">Next</button> -->
+			</div>
+		</div>
+	</div>
+    </div>
+  </div>
+</div>

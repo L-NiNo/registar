@@ -42,8 +42,92 @@ export class AppComponent implements OnInit {
 	  	medical:{},
 	  	guardian:{ primary: {}, secondary: {}}
 	  };
-	  this.ps.changePlayer(player);
+	  let player2 = {
+	  	status: undefined,
+	  	nationalId:'',
+	  	id:'',
+	  	fname:'Jon',
+	  	lname:'Doe',
+	  	email: 'xxx@xx.com',
+	  	address: {
+	  		street1:'1230 St ln',
+	  		street2:'apt 130',
+	  		city:'Austin',
+	  		state:'Texas',
+	  		zip:'78737'
+	  	},
+	  	dob:{ 
+	  		day: 9, 
+	  		month: 12, 
+	  		year: 2002,
+	  		string:'12/09/2002'
+	  	},
+	  	school:'DSHS',
+	  	grade: 9,
+	  	year: this.getSeasonYear(),
+	  	emergency: { 
+	  		primary: {
+	  			name:'james man',
+	  			relationship:'uncle',
+	  			phone:'5125736325'
+	  	}, 
+	  		secondary: {
+	  			name:'jane man',
+	  			relationship:'aunt',
+	  			phone:'5121369856'
+	  		}
+	  	},
+	  	consents:{
+	  		one:true,
+	  		two:true,
+	  		three:true,
+	  		four:true,
+	  		five:true,
+	  		six:true
+	  	},
+	  	medical:{ 
+	  		physician:'Sean Ditty',
+	  		physicianNum:'3652659685',
+	  		insurance:'cigna',
+	  		policy:'0A15795658',
+	  		callNum:'18003336666',
+	  		allergies:'N/A',
+	  		conditions:'N/A',
+	  		medications:'N/A'
+	  	},
+	  	guardian:{ 
+	  		primary: {
+	  			name:'Mommy Doe',
+	  			email:'zzz@xx.com',
+	  			phone:'3596589963'
+	  		}, 
+	  		secondary: {
+	  			name:'Daddy Doe',
+	  			phone:'9876541259'
+	  		}
+	  	}
+	  };
+
+	  this.ps.changePlayer(player2);
 	  // console.log(this);
   }
+
+  private getSeasonYear(){
+  	const today = new Date();
+  	if(today.getMonth()+1 >= 7)
+	  	return today.getFullYear().toString() + '-' + (today.getFullYear()+1).toString();
+	  else 
+	  	return (today.getFullYear()-1).toString() + '-' + today.getFullYear().toString();
+  }
+
+  isRegOpen(){
+  	/* Registration con be done from July until January */
+  	const today = new Date();
+  	const thisMonth = today.getMonth() + 1;
+  	if( thisMonth >= 7)
+  		return true;
+  	return false;
+  }
+
 
 }

@@ -15,7 +15,7 @@
 						</div>
 						<div class="form-group">
 							<label for="cell">*Cell#: </label>
-							<input name="cell" [(ngModel)]="player.guardian.primary.cell" class="form-control"  id="cell" pattern="[a-zA-Z0-9\s]+" />
+							<input name="cell" [(ngModel)]="player.guardian.primary.phone" class="form-control"  id="cell" pattern="[a-zA-Z0-9\s]+" />
 						</div>
 						<div class="form-group">
 							<label for="email">*Primary Email :</label>
@@ -32,7 +32,7 @@
 							</div>
 							<div class="form-group">
 								<label for="cell2">Cell# :</label>
-								<input name="cell2" [(ngModel)]="player.guardian.secondary.cell" class="form-control"  id="cell2" pattern="[a-zA-Z0-9\s]+"/>
+								<input name="cell2" [(ngModel)]="player.guardian.secondary.phone" class="form-control"  id="cell2" pattern="[a-zA-Z0-9\s]+"/>
 							</div>
 						</div>
 						<small><i>* indicates required</i></small>
@@ -42,7 +42,8 @@
 			                  <button name="back" class="btn btn-lg btn-secondary btn-block" (click)="back()">Back</button>
 			                </div>
 			                <div class="col-6">
-			                  <button name="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid">Next</button>
+			                  <button name="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block" >Next</button>
+			                  <!-- <button name="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid">Next</button> -->
 			                </div>
 			              </div>
 						</div>

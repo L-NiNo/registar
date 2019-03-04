@@ -22,6 +22,7 @@ export class PersonalInfoComponent implements OnInit {
   constructor(private ps: PlayerService, private datePipe: DatePipe) {
   	this.ps.player.subscribe(data => {
   		if(data) this.player = data;
+      // if(this.player.dob.year) 
   		this.header = (this.player && this.player.status == 'RETURN')?this.returningPlayerHeader:(this.player && this.player.status == 'NEW')?this.newPlayerHeader:'';
   	});
   	this.ps.view.subscribe( data => {
@@ -35,11 +36,13 @@ export class PersonalInfoComponent implements OnInit {
     	days.push(i);
     this.DOB.days = days;
     // this.player.dob.day = (this.player.dob.day)?this.player.dob.day:this.DOB.days[0];
-    this.player.dob.day = 0;
+    this.player.dob.day = (this.player.dob.day)?this.player.dob.day:0;
+    // this.player.dob.day = 0;
 
     this.DOB.months = months;
     // this.player.dob.month = (this.player.dob.month)?this.player.dob.month:this.DOB.months[0].value;
-    this.player.dob.month = 0;
+    // this.player.dob.month = 0;
+    this.player.dob.month = (this.player.dob.month)? this.player.dob.month : 0;
 
     let yr = (new Date()).getFullYear() - 29;
     for (let y: number = yr; y < (new Date()).getFullYear(); y++)
@@ -47,7 +50,7 @@ export class PersonalInfoComponent implements OnInit {
 
     this.DOB.years = years;
     // this.player.dob.year = (this.player.dob.year)?this.player.dob.year:this.DOB.years[0];
-    this.player.dob.year = 0;
+    this.player.dob.year = (this.player.dob.year)? this.player.dob.year : 0;
    }
 
   ngOnInit() {

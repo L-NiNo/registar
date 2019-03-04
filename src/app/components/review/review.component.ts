@@ -8,7 +8,7 @@ import { PlayerService } from '../../services/player/player.service';
 })
 export class ReviewComponent implements OnInit {
   public header;
-  public newPlayerHeader = "Enter Player Information";
+  public reviewHeader = "Please Review Information";
   public returningPlayerHeader = "Verify Player Information";
   public player;
   public view;
@@ -16,7 +16,7 @@ export class ReviewComponent implements OnInit {
   constructor(private ps: PlayerService) {
     this.ps.player.subscribe(data => {
       if(data) this.player = data;
-      this.header = (this.player && this.player.status == 'RETURN')?this.returningPlayerHeader:(this.player && this.player.status == 'NEW')?this.newPlayerHeader:'';
+      this.header = this.reviewHeader;
     });
     this.ps.view.subscribe( data => {
       if(data) this.view = data;
@@ -27,11 +27,13 @@ export class ReviewComponent implements OnInit {
   }
 
   submit(){
+    console.log("submit info to db");
+    console.log("submit info to db");
     // this.ps.changePlayer(this.player);
     // this.ps.changeView('CONSENT');
   }
 
-  back(state){
+  returnTo(state){
     this.ps.changeView(state);
   }
 }
