@@ -11,6 +11,7 @@ export class ConsentsComponent implements OnInit {
   public consentHeader = "Terms & Conditions Agreement";
   public player;
   public view;
+  public isEdit;
   marked = false;
   constructor(private ps: PlayerService) {
     this.ps.player.subscribe(data => {
@@ -20,6 +21,7 @@ export class ConsentsComponent implements OnInit {
     this.ps.view.subscribe( data => {
       if(data) this.view = data;
     });
+    this.ps.etiting.subscribe(data=>{ this.isEdit = data; });
   }
 
   ngOnInit() {
@@ -27,7 +29,9 @@ export class ConsentsComponent implements OnInit {
 
   submit(){
     this.ps.changePlayer(this.player);
-    this.ps.changeView('REVIEW');
+    // SUBMIT to DB
+    console.log("submit info to db")
+    this.ps.changeView('SUCCESS');
   }
 
   back(){

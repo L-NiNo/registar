@@ -15,7 +15,8 @@ export class PersonalInfoComponent implements OnInit {
   private newPlayerHeader = "Enter Player Information";
 	private returningPlayerHeader = "Verify Player Information";
 	public player;
-	public view;
+  public view;
+	public isEdit;
 	public emailPatterm = RegexSettings.email.pattern;
 	public DOB = { days:[], months: MonthList, years:[] };
 
@@ -29,6 +30,7 @@ export class PersonalInfoComponent implements OnInit {
       if(data) this.view = data;
       // if(this.view) console.log(this.view);
     });
+    this.ps.etiting.subscribe(data=>{ this.isEdit = data; });
     let days = [];
     let months = MonthList;
     let years = [];
@@ -57,8 +59,11 @@ export class PersonalInfoComponent implements OnInit {
   	// console.log(this.DOB);
   }
   submit(){
+
 		this.ps.changePlayer(this.player);
-		this.ps.changeView('ADDY');
+		if(this.isEdit) 
+      return this.ps.changeView('REVIEW');
+    this.ps.changeView('ADDY');
   }
   onMonthChange(month){
   	console.log(month);

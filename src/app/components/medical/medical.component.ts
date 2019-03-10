@@ -12,6 +12,7 @@ export class MedicalComponent implements OnInit {
   public returningPlayerHeader = "Verify Player Information";
   public player;
   public view;
+  public isEdit;
 
   constructor(private ps: PlayerService) {
     this.ps.player.subscribe(data => {
@@ -21,6 +22,7 @@ export class MedicalComponent implements OnInit {
     this.ps.view.subscribe( data => {
       if(data) this.view = data;
     });
+    this.ps.etiting.subscribe(data=>{ this.isEdit = data; });
   }
 
   ngOnInit() {
@@ -28,7 +30,9 @@ export class MedicalComponent implements OnInit {
 
   submit(){
     this.ps.changePlayer(this.player);
-    this.ps.changeView('CONSENT');
+    if(this.isEdit) 
+      return this.ps.changeView('REVIEW');
+    this.ps.changeView('REVIEW');
   }
 
   back(){

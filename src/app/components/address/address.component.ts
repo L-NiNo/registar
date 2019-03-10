@@ -13,6 +13,7 @@ export class AddressComponent implements OnInit {
   public newPlayerHeader = "Enter Player Information";
   public returningPlayerHeader = "Verify Player Information";
   public player;
+  public isEdit;
   public view;
   public states = stateArray;
 
@@ -25,14 +26,19 @@ export class AddressComponent implements OnInit {
     this.ps.view.subscribe( data => {
       if(data) this.view = data;
     });
+    this.ps.etiting.subscribe(data=>{ this.isEdit = data; });
   }
 
   ngOnInit() {
   }
+  
   submit(){
     this.ps.changePlayer(this.player);
+    if(this.isEdit) 
+      return this.ps.changeView('REVIEW');
     this.ps.changeView('GUARD');
   }
+
   back(){
     this.ps.changeView('PI');
   }

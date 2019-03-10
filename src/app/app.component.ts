@@ -16,11 +16,11 @@ export class AppComponent implements OnInit {
   	 setTheme('bs4');
   	this.ps.player.subscribe( data => {
   		if(data) this.player = data;
-  		if(this.player) console.log(this.player);
+  		// if(this.player) console.log(this.player);
   	});
   	this.ps.view.subscribe( data => {
   		if(data) this.view = data;
-  		if(this.view) console.log(this.view);
+  		// if(this.view) console.log(this.view);
   	});
   }
 
@@ -108,7 +108,7 @@ export class AppComponent implements OnInit {
 	  	}
 	  };
 
-	  this.ps.changePlayer(player2);
+	  this.ps.changePlayer(player);
 	  // console.log(this);
   }
 

@@ -14,7 +14,7 @@ export class NationalInputComponent implements OnInit {
 	public nationalId;
 	public loading: boolean = false;
 	private returningPlayerHeader = "Enter your National Lacrosse ID Number: ";
-  	private newPlayerHeader = "Enter your National Lacrosse ID Number: ";
+  private newPlayerHeader = "Enter your National Lacrosse ID Number: ";
 
   constructor(private http: HttpClient, private ps: PlayerService) {
     this.ps.player.subscribe(data => {
@@ -28,7 +28,7 @@ export class NationalInputComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
+  } 
 
   lookUp(){
   	if(!this.player || this.player.status == 'NEW') return this.ps.changeView('PI');;
@@ -40,7 +40,7 @@ export class NationalInputComponent implements OnInit {
     		data => {
       			console.log("success", data);
       			this.loading = false;
-      			this.ps.changeView('PI');
+      			this.ps.changeView('CHALLENGE');
     		},
     		error => {
       			console.log("error");

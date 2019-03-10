@@ -21,19 +21,19 @@ export class ReviewComponent implements OnInit {
     this.ps.view.subscribe( data => {
       if(data) this.view = data;
     });
+    this.ps.changeEditing(false);
   }
 
   ngOnInit() {
   }
 
   submit(){
-    console.log("submit info to db");
-    console.log("submit info to db");
-    // this.ps.changePlayer(this.player);
-    // this.ps.changeView('CONSENT');
+    this.ps.changePlayer(this.player);
+    this.ps.changeView('CONSENT');
   }
 
   returnTo(state){
+    this.ps.changeEditing(true);
     this.ps.changeView(state);
   }
 }

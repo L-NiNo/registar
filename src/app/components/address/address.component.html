@@ -8,7 +8,7 @@
 				<div class="col-12">
 					<form #form="ngForm" (ngSubmit)=submit(form) autocomplete="off">
 						Address Info:
-            <hr>
+            			<hr>
 						<div class="form-group">
 							<label for="address1">Street:</label>
 							<input name="address1" [(ngModel)]="player.address.street1" class="form-control"  id="address1" pattern="[a-zA-Z0-9\s]+" />
@@ -32,14 +32,14 @@
 							<input name="zip" [(ngModel)]="player.address.zip" class="form-control"  id="zip" maxlength="5" type="text" pattern="[0-9]*"/>
 						</div>
 						<div class="form-group">
-              <div class="row">
-                <div class="col-6">
-                  <button name="back" value="submit" class="btn btn-lg btn-secondary btn-block" (click)="back()">Back</button>
-                </div>
-                <div class="col-6">
-                  <button name="submit" value="submit" class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid">Next</button>
-                </div>
-              </div>
+			              <div class="row">
+			                <div class="col-6">
+			                  <button name="back" value="submit" class="btn btn-lg btn-secondary btn-block" (click)="back()">Back</button>
+			                </div>
+			                <div class="col-6">
+			                  <button type="button" class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid">Next</button>
+			                </div>
+			              </div>
 						</div>
 					</form>
 				</div>

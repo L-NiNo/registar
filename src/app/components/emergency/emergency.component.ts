@@ -12,6 +12,7 @@ export class EmergencyComponent implements OnInit {
   public returningPlayerHeader = "Verify Player Information";
   public player;
   public view;
+  public isEdit;
 
   constructor(private ps: PlayerService) {
     this.ps.player.subscribe(data => {
@@ -21,6 +22,7 @@ export class EmergencyComponent implements OnInit {
     this.ps.view.subscribe( data => {
       if(data) this.view = data;
     });
+    this.ps.etiting.subscribe(data=>{ this.isEdit = data; });
   }
 
   ngOnInit() {
@@ -28,6 +30,8 @@ export class EmergencyComponent implements OnInit {
 
   submit(){
     this.ps.changePlayer(this.player);
+    if(this.isEdit) 
+      return this.ps.changeView('REVIEW');
     this.ps.changeView('MED');
   }
 

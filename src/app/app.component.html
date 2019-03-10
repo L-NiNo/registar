@@ -1,44 +1,26 @@
 <div class="container-fluid">
   <div *ngIf="!isRegOpen()" class="row">
     <div class="col">
-      <div *ngIf="view == 'INIT'">
-        <player-lookup></player-lookup>
-      </div>
-      <div *ngIf="view == 'SCHOOL'">
-        <school-selector></school-selector>
-      </div>
-      <div *ngIf="view =='NAT_ID'">
-        <app-national-input></app-national-input>
-      </div>
-      <div *ngIf="view =='PI'">
-        <app-personal-info></app-personal-info>
-      </div>
-      <div *ngIf="view =='ADDY'">
-        <app-address></app-address>
-      </div>
-      <div *ngIf="view =='GUARD'">
-        <app-guardian></app-guardian>
-      </div>
-      <div *ngIf="view =='EMERGENCY'">
-        <app-emergency></app-emergency>
-      </div>
-      <div *ngIf="view =='MED'">
-        <app-medical></app-medical>
-      </div>
-      <div *ngIf="view =='CONSENT'">
-        <app-consents></app-consents>
-      </div>
-      <div *ngIf="view =='REVIEW'">
-        <app-review></app-review>
-      </div>
+        <player-lookup *ngIf="view == 'INIT'"></player-lookup>
+        <school-selector *ngIf="view == 'SCHOOL'"></school-selector>
+        <app-national-input *ngIf="view =='NAT_ID'"></app-national-input>
+        <app-personal-info *ngIf="view =='PI'"></app-personal-info>
+        <app-address *ngIf="view =='ADDY'"></app-address>
+        <app-guardian *ngIf="view =='GUARD'"></app-guardian>
+        <app-emergency *ngIf="view =='EMERGENCY'"></app-emergency>
+        <app-medical *ngIf="view =='MED'"></app-medical>
+        <app-consents *ngIf="view =='CONSENT'"></app-consents>
+        <app-review *ngIf="view =='REVIEW'"></app-review>
+        <app-challenge *ngIf="view =='CHALLENGE'"></app-challenge>
+        <app-complete *ngIf="view =='SUCCESS'"></app-complete>
     </div>
   </div>
   <div *ngIf="isRegOpen()">
     <div class="alert alert-danger" role="alert">
-      <i class="fas fa-exclamation-triangle"></i>
+      <i class="fa fa-exclamation-triangle"></i>
       We're sorry, registration for the next season isn't open until July! Please then to registar.
     </div>
   </div>
 </div>
-<pre>View State: {{ view | json }}</pre>
-<pre>Player Info: {{ player | json }}</pre>
+<!-- <pre>View State: {{ view | json }}</pre> -->
+<!-- <pre>Player Info: {{ player | json }}</pre> -->

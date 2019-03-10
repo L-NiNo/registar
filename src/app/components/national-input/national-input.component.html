@@ -6,7 +6,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<form>
+					<form autocomplete="off">
 						<div class="form-group">
 							<label for="nationalId">National ID Number:</label>
 							<input name="nationalId" [(ngModel)]="player.nationalId" class="form-control"  id="nationalId" (blur)="lookUp()" />

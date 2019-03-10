@@ -21,7 +21,16 @@ import { TextComponent } from './components/text/text.component';
 import { ValidationHelperDirective } from './directives/validation.directive';
 import { ReviewComponent } from './components/review/review.component';
 import { TextErrorComponent } from './components/text-error/text-error.component';
+import { CompleteComponent } from './components/complete/complete.component';
+import { ChallengeComponent } from './components/challenge/challenge.component';
+import { MockHttpInterceptor } from './mocks/mock-http.iterceptor';
 
+import { environment } from '../environments/environment';
+
+let providers: any[] = [ PlayerService, HeaderService ];
+
+if(environment.useMocks)
+  providers.concat(MockHttpInterceptor);
 
 
 @NgModule({
@@ -40,7 +49,9 @@ import { TextErrorComponent } from './components/text-error/text-error.component
     TextComponent,
     ValidationHelperDirective,
     ReviewComponent,
-    TextErrorComponent
+    TextErrorComponent,
+    CompleteComponent,
+    ChallengeComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +59,7 @@ import { TextErrorComponent } from './components/text-error/text-error.component
     FormsModule,
     ButtonsModule.forRoot()
   ],
-  providers: [ PlayerService, HeaderService ],
+  providers: providers,
   bootstrap: [AppComponent]
 })
 export class AppModule { }
