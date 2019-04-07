@@ -38,7 +38,14 @@ export class AppComponent implements OnInit {
 	  	grade: null,
 	  	year:'',
 	  	emergency: { primary: {}, secondary: {}},
-	  	consents:{},
+	  	consents:{
+			  REP:false,
+			LIABILITY:false,
+			CONDUCT_LOCAL:false,
+			CONDUCT_LEAGUE:false,
+			FEES:false,
+			IMAGE:false
+		},
 	  	medical:{},
 	  	guardian:{ primary: {}, secondary: {}}
 	  };

@@ -1,0 +1,20 @@
+<div>
+  <label class="container">
+    <input type="checkbox" name="{{name}}" [(ngModel)]="model" data-md-icheck (change)="toggleVisibility($event)"
+      required="{{required}}" #ctrl='ngModel'/>
+    <b>{{ header }}</b>
+    <span class="checkmark"></span>
+  </label>
+  <accordion>
+    <accordion-group [heading]="title">
+      {{text}} <a *ngIf="link" [attr.href]="link" target="_blank">{{link}}</a>
+      <ul *ngIf="ul">
+        <li *ngFor="let i of ul">{{i}}</li>
+      </ul>
+      <ol *ngIf="ol">
+        <li *ngFor="let i of ol">{{i}}</li>
+      </ol>
+    </accordion-group>
+  </accordion>
+  <hr>
+</div>

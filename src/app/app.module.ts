@@ -25,6 +25,7 @@ import { TextErrorComponent } from './components/text-error/text-error.component
 import { CompleteComponent } from './components/complete/complete.component';
 import { ChallengeComponent } from './components/challenge/challenge.component';
 import { MockHttpInterceptor } from './mocks/mock-http.iterceptor';
+import { ConsentItemComponent } from './components/consent-item/consent-item.component';
 
 import { environment } from '../environments/environment';
 
@@ -52,7 +53,8 @@ if(environment.useMocks)
     ReviewComponent,
     TextErrorComponent,
     CompleteComponent,
-    ChallengeComponent
+    ChallengeComponent,
+    ConsentItemComponent
   ],
   imports: [
     BrowserModule,

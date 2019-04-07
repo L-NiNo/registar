@@ -57,7 +57,10 @@ ngOnInit() {
     });
     console.log(cloneDeep(this.data));
   }
-
+  onChangeEvent(data, e){
+    console.log(e);
+    this.player.consents[data] = e;
+  }
   private replaceYear(title:string){
     if(title && title.indexOf(':YEAR')>-1)
       return title.replace(':YEAR', String(this.player.year));
