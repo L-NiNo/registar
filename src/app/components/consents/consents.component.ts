@@ -15,6 +15,8 @@ export class ConsentsComponent implements OnInit {
   public isEdit;
 
   public data = {};
+  public consents = [];
+  public consentsArr = [];
 
 
   marked = false;
@@ -51,11 +53,17 @@ ngOnInit() {
   }
 
   tranformData(){
+    this.consentsArr = [];
     ConsentData.forEach((item)=>{
       item.title = this.replaceYear(item.title);
       this.data[item.id] = item;
     });
+    this.consents = Object.keys(this.data);
+    this.consents.forEach(consent => {
+      this.consentsArr.push(this.data[consent]);
+    });
     console.log(cloneDeep(this.data));
+    console.log(cloneDeep(this.consentsArr));
   }
   onChangeEvent(data, e){
     console.log(e);

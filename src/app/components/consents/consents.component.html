@@ -7,12 +7,11 @@
       <div class="row">
         <div class="col-12">
           <ng-form #consentForm="ngForm" autocomplete="off">
-            <consent-item name="REP" [model]="player.consents.REP" (modelChange)="onChangeEvent('REP', $event)"  [required]="true"  [title]="data.REP.title" [header]="data.REP.check" [ol]="data.REP.ol"></consent-item>           
-            <consent-item [model]="player.consents.LIABILITY" (modelChange)="onChangeEvent('LIABILITY', $event)"  [required]="true" name="LIABILITY" [title]="data.LIABILITY.title" [header]="data.LIABILITY.check" [ul]="data.LIABILITY.ul"></consent-item>
-            <consent-item [model]="player.consents.CONDUCT_LOCAL" (modelChange)="onChangeEvent('CONDUCT_LOCAL', $event)"  [required]="true" name="CONDUCT_LOCAL" [text]="data.CONDUCT_LOCAL.text" [title]="data.CONDUCT_LOCAL.title" [header]="data.CONDUCT_LOCAL.check" [ul]="data.CONDUCT_LOCAL.ul"></consent-item> 
-            <consent-item [model]="player.consents.CONDUCT_LEAGUE" (modelChange)="onChangeEvent('CONDUCT_LEAGUE', $event)"  [required]="true" name="CONDUCT_LEAGUE" [text]="data.CONDUCT_LEAGUE.text" [link]="data.CONDUCT_LEAGUE.link" [title]="data.CONDUCT_LEAGUE.title" [header]="data.CONDUCT_LEAGUE.check" [ul]="data.CONDUCT_LEAGUE.ul"></consent-item>
-            <consent-item [model]="player.consents.FEES" (modelChange)="onChangeEvent('FEES', $event)"  [required]="true" name="FEES" [text]="data.FEES.text" [title]="data.FEES.title" [header]="data.FEES.check" [ul]="data.FEES.ul"></consent-item>
-            <consent-item [model]="player.consents.IMAGE" (modelChange)="onChangeEvent('IMAGE', $event)"  [required]="true" name="IMAGE" [text]="data.IMAGE.text" [title]="data.IMAGE.title" [header]="data.IMAGE.check" [ul]="data.IMAGE.ul"></consent-item>
+            <div *ngFor="let c of consentsArr">
+              <consent-item name="{{c.id}}" [model]="player.consents[c.id]" (modelChange)="onChangeEvent(c.id, $event)"
+                [required]="true" [text]="c.text" [link]="c.link" [title]="c.title" [header]="c.check" [ul]="c.ul"
+                [ol]="c.ol"></consent-item>
+            </div>
             <div class="form-group">
               <div class="row">
                 <div class="col-6"></div>
