@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayerService } from '../../services/player/player.service';
-
+import { ConsentData } from './ConsentData'
+import { cloneDeep } from 'lodash';
 @Component({
   selector: 'app-consents',
   templateUrl: './consents.component.html',
@@ -12,11 +13,17 @@ export class ConsentsComponent implements OnInit {
   public player;
   public view;
   public isEdit;
+
+  public data = {};
+
+
   marked = false;
+
   constructor(private ps: PlayerService) {
     this.ps.player.subscribe(data => {
       if(data) this.player = data;
       this.header = this.consentHeader;
+      this.tranformData();
     });
     this.ps.view.subscribe( data => {
       if(data) this.view = data;
@@ -24,7 +31,8 @@ export class ConsentsComponent implements OnInit {
     this.ps.etiting.subscribe(data=>{ this.isEdit = data; });
   }
 
-  ngOnInit() {
+ngOnInit() {
+    this.tranformData();
   }
 
   submit(){
@@ -41,4 +49,19 @@ export class ConsentsComponent implements OnInit {
   toggleVisibility(e){
     this.marked= e.target.checked;
   }
+
+  tranformData(){
+    ConsentData.forEach((item)=>{
+      item.title = this.replaceYear(item.title);
+      this.data[item.id] = item;
+    });
+    console.log(cloneDeep(this.data));
+  }
+
+  private replaceYear(title:string){
+    if(title && title.indexOf(':YEAR')>-1)
+      return title.replace(':YEAR', String(this.player.year));
+    return title;
+  }
+
 }

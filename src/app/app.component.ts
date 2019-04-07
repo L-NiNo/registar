@@ -78,12 +78,12 @@ export class AppComponent implements OnInit {
 	  		}
 	  	},
 	  	consents:{
-	  		one:true,
-	  		two:true,
-	  		three:true,
-	  		four:true,
-	  		five:true,
-	  		six:true
+			REP:true,
+	  		LIABILITY:true,
+	  		CONDUCT_LOCAL:true,
+	  		CONDUCT_LEAGUE:true,
+	  		FEES:true,
+	  		IMAGE:true
 	  	},
 	  	medical:{ 
 	  		physician:'Sean Ditty',

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -57,7 +58,8 @@ if(environment.useMocks)
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    ButtonsModule.forRoot()
+    ButtonsModule.forRoot(),
+    AccordionModule.forRoot()
   ],
   providers: providers,
   bootstrap: [AppComponent]
