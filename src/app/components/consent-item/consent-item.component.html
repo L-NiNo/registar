@@ -1,12 +1,13 @@
 <div>
-  <label class="container">
-    <input type="checkbox" name="{{name}}" [(ngModel)]="model" data-md-icheck (change)="toggleVisibility($event)"
-      required="{{required}}" #ctrl='ngModel'/>
-    <b>{{ header }}</b>
-    <span class="checkmark"></span>
-  </label>
   <accordion>
-    <accordion-group [heading]="title">
+    <accordion-group [isOpen]="!model">
+      <label accordion-heading class="container">
+        <input type="checkbox" name="{{name}}" [(ngModel)]="model" data-md-icheck (change)="toggleVisibility($event)"
+          required="{{required}}" #ctrl='ngModel' />
+        <h5>{{ header }}</h5>
+        <span class="checkmark"></span>
+      </label>
+      <h5>{{title}}</h5>
       {{text}} <a *ngIf="link" [attr.href]="link" target="_blank">{{link}}</a>
       <ul *ngIf="ul">
         <li *ngFor="let i of ul">{{i}}</li>
