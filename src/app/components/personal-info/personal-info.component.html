@@ -17,7 +17,8 @@
 						</div>
 						<div class="form-group">
 							<label for="email">Email:</label>
-							<input type="email" name="email" #email="ngModel" [(ngModel)]="player.email" class="form-control" required id="email" [pattern]="emailPatterm" maxlength="250"/>
+							<app-text [(model)]="player.email" type="email" name="email" id="email" required="true" min="1" max="250" [pattern]="emailPatterm" placeholder="my_email@something.com"></app-text>
+							<!-- <input type="email" name="email" #email="ngModel" [(ngModel)]="player.email" class="form-control" required id="email" [pattern]="emailPatterm" maxlength="250"/> -->
 							<!-- <div *ngIf="email.invalid && (email.dirty || email.touched)"  class="alert alert-danger">
 								<div *ngIf="email.errors.required">Name is required.</div>
 								<div *ngIf="email.errors.minlength">Name must be at least 4 characters long.</div>
@@ -77,7 +78,7 @@
 							<div class="row">
 								<div class="col"></div>
 								<div class="col">
-									<button name="submit" value="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block">Next</button>
+									<button disabled="!form.valid" name="submit" value="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block">Next</button>
 									<!-- <button name="submit" value="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid">Next</button> -->
 								</div>
 							</div>

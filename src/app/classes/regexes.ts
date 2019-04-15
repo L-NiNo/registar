@@ -3,6 +3,7 @@ export const RegexSettings = {
         addressCharacters: /[a-zA-Z0-9\s#\.'`-]/,
         alphaOnly: /[a-zA-Z]/,
         alphanumeric: /[a-zA-Z0-9]/,
+        email: /[a-z0-9!@#$%&'*+/=?^_`{|}~-]/,
         lettersAposHyphen: /[a-zA-Z'`-]/,
         lettersAposHyphenSpace: /[a-zA-Z\s'`-]/,
         nameCharacters: /[a-zA-Z\s'`-]/,
