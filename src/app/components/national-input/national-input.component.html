@@ -1,15 +1,23 @@
 <div class="col card " style="width: 50em;">
-	<div class="card-header text-center"> 
+	<div class="card-header text-center">
 		<h4>{{ header }}</h4>
 	</div>
 	<div class="card-body">
 		<div class="container">
+			<div *ngIf="noPlayerFound" class="alert alert-danger" role="alert">
+				<span class="row">
+					<span class="col-1"><i class="fa fa-exclamation-triangle fa-3x"></i></span>
+					<span class="col-11">We're sorry we could not found a record with that number. Please retry or
+						please enter a <a class="alert-link pointer" (click)='newReg()'>new registration</a></span>
+				</span>
+			</div>
 			<div class="row">
 				<div class="col-12">
 					<form autocomplete="off">
 						<div class="form-group">
 							<label for="nationalId">National ID Number:</label>
-							<input name="nationalId" [(ngModel)]="player.nationalId" class="form-control"  id="nationalId" (blur)="lookUp()" />
+							<input name="nationalId" [(ngModel)]="player.nationalId" class="form-control"
+								id="nationalId" (blur)="lookUp()" (focus)='noPlayerFound = false' />
 						</div>
 					</form>
 					<app-loading *ngIf="loading"></app-loading>
