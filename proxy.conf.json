@@ -1,11 +1,11 @@
 {
-"/php":
+"/api":
 	{
 		"target": "http://localhost:80",
 		"secure":false,
 		"logLevel": "debug",
 		"pathRewrite": {
-	      "^/php": "registar/php"
+	      "^/api": "registar/api"
 	    }
 	}
 }
