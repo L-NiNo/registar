@@ -83,13 +83,17 @@
                   </span>
                 </span>
               </span>
-              <span class="col-md-4" *ngIf="player.guardian.secondary.name">
-                <span class="row">
-                  <span class="col"><b>Guardian#2: </b>{{ player.guardian.secondary.name }}
+              <span class="col-md-4" *ngIf="player.guardian.secondary">
+                <span class="row" *ngIf="player.guardian.secondary.name">
+                  <span class=" col"><b>Guardian#2: </b>{{ player.guardian.secondary.name }}
                   </span>
                 </span>
-                <span class="row">
-                  <span class="col"><b>Phone: </b>{{ player.guardian.secondary.phone }}
+                <span class="row" *ngIf="player.guardian.secondary.email">
+                  <span class=" col"><b>Email: </b>{{ player.guardian.secondary.email }}
+                  </span>
+                </span>
+                <span class="row" *ngIf="player.guardian.secondary.phone">
+                  <span class=" col"><b>Phone: </b>{{ player.guardian.secondary.phone }}
                   </span>
                 </span>
               </span>
