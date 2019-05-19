@@ -6,49 +6,75 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<form #form="ngForm"  autocomplete="off">
+					<form #form="ngForm" autocomplete="off">
 						Emergency Info:
-            <hr>
+						<hr>
 						<div class="form-group">
 							<label for="constact">*Emergency Contact: </label>
-							<input name="contact" [(ngModel)]="player.emergency.primary.name" class="form-control"  id="contact" pattern="[a-zA-Z0-9\s]+" />
+							<app-text [(model)]="player.emergency.primary.name" type="text" name="contact" id="contact"
+								required="true" min="1" max="100" pattern="[a-zA-Z0-9\s]+" placeholder="">
+							</app-text>
 						</div>
 						<div class="form-group">
-							<label for="relationship">*Relationship to player: </label>
-							<input name="relationship" [(ngModel)]="player.emergency.primary.relationship" class="form-control"  id="relationship" pattern="[a-zA-Z0-9\s]+" />
+							<label for="relationship">*Relationship to player: {{player.emergency.primary.relationship}}</label>
+							<select name="relationship" [(ngModel)]="player.emergency.primary.relationship" class="form-control"
+								id="relationship" required>
+								<option *ngIf="!player.emergency.primary.relationship" value=null
+									selected="(!player.emergency.primary.relationship)">-- Select --</option>
+								<option *ngFor="let relationship of relationships" [ngValue]="relationship.id">{{relationship.name}}
+								</option>
+							</select>
 						</div>
 						<div class="form-group">
 							<label for="cell">*Cell# :</label>
-							<input name="cell" [(ngModel)]="player.emergency.primary.phone" class="form-control"  id="cell" pattern="[a-zA-Z0-9\s]+"/>
+							<app-text [(model)]="player.emergency.primary.phone" type="text" name="cell" id="cell" required="true"
+								min="1" max="10" pattern="[0-9]{10}" placeholder="">
+							</app-text>
 						</div>
+
 						<div class="form-group">
-							<input type="checkbox" [checked]="secondary" (change)="secondary = !secondary"/>
+							<input type="checkbox" [checked]="secondary" (change)="secondary = !secondary" />
 							<label for="cell">Add Secondary? (optional)</label>
 						</div>
+
 						<div *ngIf="secondary">
 							<div class="form-group">
 								<label for="constact">Emergency Contact: </label>
-								<input name="contact" [(ngModel)]="player.emergency.secondary.name" class="form-control"  id="contact" pattern="[a-zA-Z0-9\s]+" />
+								<app-text [(model)]="player.emergency.secondary.name" type="text" name="contact2" id="contact2"
+									required="false" min="1" max="100" pattern="[a-zA-Z0-9\s]+" placeholder="">
+								</app-text>
 							</div>
+
 							<div class="form-group">
-								<label for="relationship">Relationship to player: </label>
-								<input name="relationship" [(ngModel)]="player.emergency.secondary.relationship" class="form-control"  id="relationship" pattern="[a-zA-Z0-9\s]+" />
+								<label for="relationship2">Relationship to player: {{player.emergency.secondary.relationship}}</label>
+								<select name="relationship2" [(ngModel)]="player.emergency.secondary.relationship" class="form-control"
+									id="relationship">
+									<option *ngIf="!player.emergency.secondary.relationship" value=null
+										selected="(!player.emergency.secondary.relationship)">-- Select --</option>
+									<option *ngFor="let relationship of relationships" [ngValue]="relationship.id">{{relationship.name}}
+									</option>
+								</select>
+
 							</div>
 							<div class="form-group">
 								<label for="cell2">Cell# :</label>
-								<input name="cell2" [(ngModel)]="player.emergency.secondary.phone" class="form-control"  id="cell2" pattern="[a-zA-Z0-9\s]+"/>
+								<app-text [(model)]="player.emergency.secondary.phone" type="text" name="cell2" id="cell2"
+									required="false" min="1" max="10" pattern="[0-9]{10}" placeholder="">
+								</app-text>
 							</div>
 						</div>
 						<small><i>* indicates required</i></small>
 						<div class="form-group">
-              <div class="row">
-                <div class="col-6">
-                  <button name="back" value="submit" class="btn btn-lg btn-secondary btn-block" (click)="back()">Back</button>
-                </div>
-                <div class="col-6">
-                  <button name="submit" value="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid">Next</button>
-                </div>
-              </div>
+							<div class="row">
+								<div class="col-6">
+									<button name="back" value="submit" class="btn btn-lg btn-secondary btn-block"
+										(click)="back()">Back</button>
+								</div>
+								<div class="col-6">
+									<button name="submit" value="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block"
+										[disabled]="!form.valid">Next</button>
+								</div>
+							</div>
 						</div>
 					</form>
 				</div>
