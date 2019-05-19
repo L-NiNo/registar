@@ -11,41 +11,55 @@
 						<hr>
 						<div class="form-group">
 							<label for="guardian">*Parent/Guardian: </label>
-							<input name="guardian" [(ngModel)]="player.guardian.primary.name" class="form-control"  id="guardian" pattern="[a-zA-Z0-9\s]+" />
-						</div>
-						<div class="form-group">
+							<app-text [(model)]="player.guardian.primary.name" type="text" name="guardian" id="guardian"
+								required="true" min="1" max="50" pattern="[a-zA-Z0-9\s]+" placeholder="">
+							</app-text>
+
 							<label for="cell">*Cell#: </label>
-							<input name="cell" [(ngModel)]="player.guardian.primary.phone" class="form-control"  id="cell" pattern="[a-zA-Z0-9\s]+" />
-						</div>
-						<div class="form-group">
+							<app-text [(model)]="player.guardian.primary.phone" type="text" name="cell" id="cell" required="true"
+								min="1" max="10" pattern="[0-9]{10}" placeholder="5120000000">
+							</app-text>
+
 							<label for="email">*Primary Email :</label>
-							<input name="email" [(ngModel)]="player.guardian.primary.email" class="form-control"  id="email" pattern="[a-zA-Z0-9\s]+"/>
+							<app-text [(model)]="player.guardian.primary.email" type="email" name="email" id="email" required="true"
+								min="1" max="250" [pattern]="emailPattern" placeholder="my_email@something.com">
+							</app-text>
 						</div>
+
 						<div class="form-group">
-							<input type="checkbox" [checked]="secondary" (change)="secondary = !secondary"/>
+							<input type="checkbox" [checked]="secondary" (change)="secondary = !secondary" />
 							<label for="cell">Add Secondary? (optional)</label>
 						</div>
+
 						<div *ngIf="secondary">
 							<div class="form-group">
 								<label for="constact">Parent/Guardian: </label>
-								<input name="contact" [(ngModel)]="player.guardian.secondary.name" class="form-control"  id="contact" pattern="[a-zA-Z0-9\s]+" />
-							</div>
-							<div class="form-group">
+								<app-text [(model)]="player.guardian.secondary.name" type="text" name="contact" id="contact"
+									required="false" min="1" max="100" pattern="[a-zA-Z0-9\s]+" placeholder="">
+								</app-text>
+
 								<label for="cell2">Cell# :</label>
-								<input name="cell2" [(ngModel)]="player.guardian.secondary.phone" class="form-control"  id="cell2" pattern="[a-zA-Z0-9\s]+"/>
+								<app-text [(model)]="player.guardian.secondary.phone" type="text" name="cell2" id="cell2"
+									required="false" min="1" max="10" pattern="[0-9]{10}" placeholder="">
+								</app-text>
+
+								<label for="email">Secondary Email :</label>
+								<app-text [(model)]="player.guardian.secondary.email" type="email2" name="email2" id="email2"
+									required="false" min="1" max="250" [pattern]="emailPattern" placeholder="my_email@something.com">
+								</app-text>
 							</div>
 						</div>
 						<small><i>* indicates required</i></small>
 						<div class="form-group">
-			              <div class="row">
-			                <div class="col-6">
-			                  <button name="back" class="btn btn-lg btn-secondary btn-block" (click)="back()">Back</button>
-			                </div>
-			                <div class="col-6">
-			                  <button name="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block" >Next</button>
-			                  <!-- <button name="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid">Next</button> -->
-			                </div>
-			              </div>
+							<div class="row">
+								<div class="col-6">
+									<button name="back" class="btn btn-lg btn-secondary btn-block" (click)="back()">Back</button>
+								</div>
+								<div class="col-6">
+									<button name="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block"
+										[disabled]="!form.valid">Next</button>
+								</div>
+							</div>
 						</div>
 					</form>
 				</div>
