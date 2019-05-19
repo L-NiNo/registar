@@ -11,30 +11,33 @@
 						<hr>
 						<div class="form-group">
 							<label for="address1">Street:</label>
-							<app-text [(model)]="player.address.street1" type="text" name="street1" id="street1" required="true"
-								min="1" max="250" pattern="[a-zA-Z0-9\s]+" placeholder="">
+							<app-text [(model)]="player.address.street1" type="text" name="street1" id="street1"
+								required="true" min="1" max="250" pattern="[a-zA-Z0-9\s]+" placeholder="">
 							</app-text>
 
 							<label for="address2">Apt</label>
-							<app-text [(model)]="player.address.street2" type="text" name="street2" id="street2" required="false"
-								min="1" max="250" pattern="[a-zA-Z0-9\s]+" placeholder="">
+							<app-text [(model)]="player.address.street2" type="text" name="street2" id="street2"
+								required="false" min="1" max="250" pattern="[a-zA-Z0-9\s]+" placeholder="">
 							</app-text>
 
 							<label for="city">City:</label>
-							<app-text [(model)]="player.address.city" type="text" name="city" id="city" required="true" min="1"
-								max="250" pattern="[a-zA-Z0-9\s]+" placeholder="">
+							<app-text [(model)]="player.address.city" type="text" name="city" id="city" required="true"
+								min="1" max="250" pattern="[a-zA-Z0-9\s]+" placeholder="">
 							</app-text>
 
 							<div class="form-group">
 								<label for="state">State: </label>
 								<select name="state" [(ngModel)]="player.address.state" class="form-control" id="state">
+									<option *ngIf="!player.address.state" value=null selected="(!player.address.state)">
+										--
+										Select --</option>
 									<option *ngFor="let state of states" [ngValue]="state.id">{{state.name}}</option>
 								</select>
 							</div>
 
 							<label for="zip">Zip Code: </label>
-							<app-text [(model)]="player.address.zip" type="text" name="zip" id="zip" required="true" min="1" max="5"
-								pattern="[0-9]{5}" placeholder="">
+							<app-text [(model)]="player.address.zip" type="text" name="zip" id="zip" required="true"
+								min="1" max="5" pattern="[0-9]{5}" placeholder="">
 							</app-text>
 
 						</div>
@@ -45,8 +48,8 @@
 										(click)="back()">Back</button>
 								</div>
 								<div class="col-6">
-									<button type="submit" name="submit" value="submit" class="btn btn-lg btn-primary btn-block"
-										[disabled]="!form.valid">Next</button>
+									<button type="submit" name="submit" value="submit"
+										class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid">Next</button>
 								</div>
 							</div>
 						</div>
