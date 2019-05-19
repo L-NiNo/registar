@@ -8,52 +8,64 @@
 				<div class="col-12">
 					<form #form="ngForm" autocomplete="off">
 						Medical Info:
-            <hr>
+						<hr>
 						<div class="form-group">
 							<label for="physician">Physician:</label>
-							<input name="physician" [(ngModel)]="player.medical.physician" class="form-control"  id="physician" pattern="[a-zA-Z0-9\s]+" />
-						</div>
-						<div class="form-group">
+							<app-text [(model)]="player.medical.physician" type="text" name="physician" id="physician" required="true"
+								min="1" max="100" pattern="[a-zA-Z0-9\s]+" placeholder="">
+							</app-text>
+
 							<label for="physicianNum">Physician Phone #:</label>
-							<input name="physicianNum" [(ngModel)]="player.medical.physicianNum" class="form-control"  id="physicianNum" pattern="[a-zA-Z0-9\s]+" />
-						</div>
-						<div class="form-group">
+							<app-text [(model)]="player.medical.physicianNum" type="text" name="physicianNum" id="physicianNum"
+								required="true" min="1" max="10" pattern="[0-9]{10}" placeholder="">
+							</app-text>
+
 							<label for="insurance">Health Insurance Carrier:</label>
-							<input name="insurance" [(ngModel)]="player.medical.insurance" class="form-control"  id="insurance" pattern="[a-zA-Z0-9\s]+"/>
-						</div>
-						<div class="form-group">
+							<app-text [(model)]="player.medical.insurance" type="text" name="insurance" id="insurance" required="true"
+								min="1" max="100" pattern="[a-zA-Z0-9\s]+" placeholder="">
+							</app-text>
+
 							<label for="policy">Policy #: </label>
-							<input name="policy" [(ngModel)]="player.medical.policy" class="form-control"  id="policy" pattern="[a-zA-Z0-9\s]+"/>
-						</div>
-						<div class="form-group">
+							<app-text [(model)]="player.medical.policy" type="text" name="policy" id="policy" required="true" min="1"
+								max="100" pattern="[a-zA-Z0-9\s]+" placeholder="">
+							</app-text>
+
 							<label for="callNum">Insurance 800 #: </label>
-							<input name="callNum" [(ngModel)]="player.medical.callNum" class="form-control"  id="callNum" maxlength="11" type="text" pattern="[0-9]*"/>
+							<app-text [(model)]="player.medical.callNum" type="text" name="callNum" id="callNum" required="true"
+								min="1" max="11" pattern="[0-9]{1,11}" placeholder="">
+							</app-text>
+
+							<label for="allergies">Allergies: </label><i class="float-right">Insert N/A if none</i>
+							<app-text [(model)]="player.medical.allergies" type="text" name="allergies" id="allergies" required="true"
+								min="1" max="250" pattern="[a-zA-Z0-9\\/,]+" placeholder="">
+							</app-text>
+							<!-- <i>Insert N/A if none</i> -->
+
+							<label for="conditions">Medical conditions we should know about:</label><i class="float-right">Insert N/A
+								if none</i>
+							<app-text [(model)]="player.medical.conditions" type="text" name="conditions" id="conditions"
+								required="true" min="1" max="250" pattern="[a-zA-Z0-9\\/,]+" placeholder="">
+							</app-text>
+							<!-- <i>Insert N/A if none</i> -->
+
+							<label for="medications">Daily Medications: </label><i class="float-right">Insert N/A if none</i>
+							<app-text [(model)]="player.medical.medications" type="text" name="medications" id="medications"
+								required="true" min="1" max="250" pattern="[a-zA-Z0-9\\/,]+" placeholder="">
+							</app-text>
+
 						</div>
+
 						<div class="form-group">
-							<label for="allergies">Allergies: </label>
-							<input name="allergies" [(ngModel)]="player.medical.allergies" class="form-control"  id="allergies" maxlength="100" type="text" pattern="[a-zA-Z0-9\s]+"/>
-							<i>Insert N/A if none</i>
-						</div>
-						<div class="form-group">
-							<label for="conditions">Medical conditions we should know about:</label>
-							<input name="conditions" [(ngModel)]="player.medical.conditions" class="form-control"  id="conditions" maxlength="100" type="text" pattern="[a-zA-Z0-9\s]+"/>
-							<i >Insert N/A if none</i>
-						</div>
-						<div class="form-group">
-							<label for="medications">Daily Medications: </label>
-							<input name="medications" [(ngModel)]="player.medical.medications" class="form-control"  id="medications" maxlength="100" type="text" pattern="[a-zA-Z0-9\s]+"/>
-								<i >Insert N/A if none</i>
-						</div>
-						<div class="form-group">
-              <div class="row">
-                <div class="col-6">
-                  <button name="back" value="submit" class="btn btn-lg btn-secondary btn-block" (click)="back()">Back</button>
-                </div>
-                <div class="col-6">
-                  <button name="submit" value="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block">Next</button>
-                  <!-- <button name="submit" value="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid">Next</button> -->
-                </div>
-              </div>
+							<div class="row">
+								<div class="col-6">
+									<button name="back" value="submit" class="btn btn-lg btn-secondary btn-block"
+										(click)="back()">Back</button>
+								</div>
+								<div class="col-6">
+									<button name="submit" value="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block"
+										[disabled]="!form.valid">Next</button>
+								</div>
+							</div>
 						</div>
 					</form>
 				</div>

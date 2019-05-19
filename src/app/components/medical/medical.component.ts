@@ -16,26 +16,26 @@ export class MedicalComponent implements OnInit {
 
   constructor(private ps: PlayerService) {
     this.ps.player.subscribe(data => {
-      if(data) this.player = data;
-      this.header = (this.player && this.player.status == 'RETURN')?this.returningPlayerHeader:(this.player && this.player.status == 'NEW')?this.newPlayerHeader:'';
+      if (data) this.player = data;
+      this.header = (this.player && this.player.status == 'RETURN') ? this.returningPlayerHeader : (this.player && this.player.status == 'NEW') ? this.newPlayerHeader : '';
     });
-    this.ps.view.subscribe( data => {
-      if(data) this.view = data;
+    this.ps.view.subscribe(data => {
+      if (data) this.view = data;
     });
-    this.ps.etiting.subscribe(data=>{ this.isEdit = data; });
+    this.ps.etiting.subscribe(data => { this.isEdit = data; });
   }
 
   ngOnInit() {
   }
 
-  submit(){
+  submit() {
     this.ps.changePlayer(this.player);
-    if(this.isEdit) 
+    if (this.isEdit)
       return this.ps.changeView('REVIEW');
     this.ps.changeView('REVIEW');
   }
 
-  back(){
+  back() {
     this.ps.changeView('EMERGENCY');
   }
 }
