@@ -25,6 +25,7 @@ export class BirthdayInputComponent implements OnInit {
 
   ngOnInit() {
     this.setDob();
+
   }
 
   populateSelects() {
@@ -45,9 +46,9 @@ export class BirthdayInputComponent implements OnInit {
   }
 
   setDob() {
-    this.model.day = (this.model.day) ? Number(this.model.day) : 0;
-    this.model.month = (this.model.month) ? Number(this.model.month) : 0;
-    this.model.year = (this.model.year) ? Number(this.model.year) : 0;
+    this.model.day = (this.model.day) ? Number(this.model.day) : null;
+    this.model.month = (this.model.month) ? Number(this.model.month) : null;
+    this.model.year = (this.model.year) ? Number(this.model.year) : null;
   }
 
   onMonthChange(month) {
@@ -80,7 +81,9 @@ export class BirthdayInputComponent implements OnInit {
     let day = Number(this.model.day);
     let month = Number(this.model.month);
     let year = Number(this.model.year);
-    if (!year || !month || !day) return this.model.clearBirthday();
+    if (!year || !month || !day) {
+      return this.model.clearBirthday();
+    }
     this.model = new Birthdate(day, month, year);
     this.modelChange.emit(this.model);
   }

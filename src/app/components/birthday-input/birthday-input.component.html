@@ -3,9 +3,9 @@
     <div class="row">
       <div class="col-sm-4">
         <label for="month">Month:</label>
-        <select name="month" [(ngModel)]="model.month" class="form-control"
+        <select #month="ngModel" name="month" [(ngModel)]="model.month" class="form-control"
           (ngModelChange)="onMonthChange(model.month); onDobChange();" required>
-          <option [value]='0' selected="(!model.month)">-- Select --</option>
+          <option value=null selected="(!model.month)">-- Select --</option>
           <option *ngFor="let month of DOB.months" [ngValue]="month.value">
             {{ month.name }}</option>
         </select>
@@ -13,16 +13,17 @@
 
       <div class="col-sm-4">
         <label for="day">Day:</label>
-        <select name="day" [(ngModel)]="model.day" class="form-control" (ngModelChange)="onDobChange()" required>
-          <option [value]='0' selected="(!model.day)">-- Select --</option>
+        <select #day="ngModel" name="day" [(ngModel)]="model.day" class="form-control" (ngModelChange)="onDobChange()"
+          required>
+          <option value=null selected="(!model.day)">-- Select --</option>
           <option *ngFor="let day of DOB.days" [ngValue]="day">{{ day }}</option>
         </select>
       </div>
       <div class="col-sm-4">
         <label for="year">Year:</label>
-        <select name="year" [(ngModel)]="model.year" class="form-control"
+        <select #year="ngModel" name="year" [(ngModel)]="model.year" class="form-control"
           (ngModelChange)="checkYear(model.year); onDobChange()" required>
-          <option [value]='0' selected="(!model.year)">-- Select --</option>
+          <option value=null selected="(!model.year)">-- Select --</option>
           <option *ngFor="let year of DOB.years" [ngValue]="year">{{ year }}
           </option>
         </select>
@@ -30,3 +31,6 @@
     </div>
   </div>
 </div>
+<!-- <pre>day: {{ day.errors | json }}</pre>
+<pre>month: {{ month.errors | json }}</pre>
+<pre>year: {{ year.errors | json }}</pre> -->
