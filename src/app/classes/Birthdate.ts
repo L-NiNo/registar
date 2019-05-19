@@ -1,44 +1,45 @@
-export class Birthdate { 
-    day: string; 
-    month: string;
-    year: string;
+export class Birthdate {
+    day: string | number;
+    month: string | number
+    year: string | number;
     birthday: string;
-    
+
     constructor(
-        day?:string, 
-        month?:string, 
-        year?:string 
-    ){
+        day?: string | number,
+        month?: string | number,
+        year?: string | number,
+        birthday?: string
+    ) {
         this.day = day;
         this.month = month;
         this.year = year;
-        if(this.year && this.month && this.day)
+        if (this.year && this.month && this.day)
             this.birthday = this.toString();
     }
 
-    toString(){
-        return this.getMonth().concat('/').concat(this.getDay()).concat('/').concat(this.year);
+    toString() {
+        return String(this.getMonth()).concat('/').concat(String(this.getDay())).concat('/').concat(String(this.year));
     }
 
-    setBirthday(){
+    setBirthday() {
         this.birthday = this.toString();
     }
 
-    getBithday(){
-        return this.birthday;        
+    getBithday() {
+        return this.birthday;
     }
 
-    clearBirthday(){
+    clearBirthday() {
         this.birthday = '';
     }
 
-    private getDay(){
-        if(Number(this.day) > 10) return this.day;
-        return '0'.concat(this.day);
+    private getDay() {
+        if (Number(this.day) > 10) return this.day;
+        return '0'.concat(String(this.day));
     }
 
-    private getMonth(){
-        if(Number(this.month) > 10) return this.month;
-        return '0'.concat(this.month);
+    private getMonth() {
+        if (Number(this.month) > 10) return this.month;
+        return '0'.concat(String(this.month));
     }
 }
