@@ -2,10 +2,10 @@ import { Component, OnInit, Input, Output, ViewChild, EventEmitter } from '@angu
 import { ControlContainer, NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-text',
-  templateUrl: './text.component.html',
-  styleUrls: ['./text.component.scss'],
-  viewProviders:[{provide: ControlContainer, useExisting: NgForm}]
+	selector: 'app-text',
+	templateUrl: './text.component.html',
+	styleUrls: ['./text.component.scss'],
+	viewProviders: [{ provide: ControlContainer, useExisting: NgForm }]
 })
 /*
 * --- TEMPLATE DRIVEN APPROACH ----
@@ -13,9 +13,9 @@ import { ControlContainer, NgForm } from '@angular/forms';
 * --- parent form is async from html #form="ngForm"
 */
 
-export class TextComponent implements OnInit { 
+export class TextComponent implements OnInit {
 
-	@Output() modelChange:EventEmitter<string> = new EventEmitter<string>();
+	@Output() modelChange: EventEmitter<string> = new EventEmitter<string>();
 	@Input() model; // Binding to parent variable
 	@Input() name;
 	@Input() id;
@@ -26,24 +26,24 @@ export class TextComponent implements OnInit {
 	@Input() pattern; // Optional
 	@Input() placeholder; // Optional
 
-	@Output() isBlurred:EventEmitter<boolean> = new EventEmitter<boolean>();
+	@Output() isBlurred: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-	@ViewChild('ctrl') control:any;
+	@ViewChild('ctrl') control: any;
 
 	public classes;
 	public inputClass;
 	public lostFocus = false;
 
-  constructor() { }
+	constructor() { }
 
 	ngOnInit() {
-  		this.classes = "form-control" + " "+ this.type;
-  }
+		this.classes = "form-control" + " " + this.type;
+	}
 
-  onBlur() {
-    	this.lostFocus = true;
-    	this.isBlurred.emit(this.lostFocus);
-    	this.errorCheck();
+	onBlur() {
+		this.lostFocus = true;
+		this.isBlurred.emit(this.lostFocus);
+		this.errorCheck();
 	}
 
 	onFocus() {
@@ -53,11 +53,11 @@ export class TextComponent implements OnInit {
 	errorCheck() {
 		const ctrl = this.control;
 		if (ctrl.invalid && (ctrl.dirty || ctrl.touched)) {
-	 			this.inputClass = "has-error";
+			this.inputClass = "has-error";
 		} else if (ctrl.valid && (ctrl.dirty || ctrl.touched)) {
-		  	this.inputClass = "has-success";
+			this.inputClass = "has-success";
 		} else {
-		  	this.inputClass = null;
+			this.inputClass = null;
 		}
 	}
 
