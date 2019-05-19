@@ -24,7 +24,11 @@
               </span>
               <span class="col-md-1"></span>
               <span class="col-md-11">
-                <b>Date of Birth: </b>{{ player.dob.string }}
+                <b>Date of Birth: </b>{{ player.dob.birthday }}
+              </span>
+              <span class="col-md-1"></span>
+              <span class="col-md-11">
+                <b>Current Grade: </b>{{ player.grade }}<sup>th</sup>
               </span>
             </span>
           </p>
@@ -44,7 +48,8 @@
               <span class="col-md-1"></span>
               <span class="col-md-11">{{ player.address.street1 }} {{ player.address.street2 }}</span>
               <span class="col-md-1"></span>
-              <span class="col-md-11">{{ player.address.city }} {{ player.address.state }}, {{ player.address.zip }} </span>
+              <span class="col-md-11">{{ player.address.city }} {{ player.address.state }}, {{ player.address.zip }}
+              </span>
             </span>
           </p>
         </div>
@@ -186,34 +191,35 @@
                   </span>
                 </span>
               </span>
-          	</span>
+            </span>
             <br>
-	          <span class="row">
-	            <span class="col-md-1"></span>
-	            <span class="col-md-11">
-	            	<b>Alergies: </b>{{ player.medical.allergies }} 
-	            </span>
-	            <span class="col-md-1"></span>
-	            <span class="col-md-11">
-	            	<b>Medical Conditions: </b>{{ player.medical.conditions }} 
-	            </span>
-	            <span class="col-md-1"></span>
-	            <span class="col-md-11">
-	            	<b>Medications: </b>{{ player.medical.medications }} 
-	            </span>
-	          </span>
+            <span class="row">
+              <span class="col-md-1"></span>
+              <span class="col-md-11">
+                <b>Alergies: </b>{{ player.medical.allergies }}
+              </span>
+              <span class="col-md-1"></span>
+              <span class="col-md-11">
+                <b>Medical Conditions: </b>{{ player.medical.conditions }}
+              </span>
+              <span class="col-md-1"></span>
+              <span class="col-md-11">
+                <b>Medications: </b>{{ player.medical.medications }}
+              </span>
+            </span>
           </p>
         </div>
       </div>
       <div class="form-group">
-		<div class="row">
-			<div class="col"></div>
-			<div class="col">
-				<button name="submit" value="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block">Next</button>
-				<!-- <button name="submit" value="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid">Next</button> -->
-			</div>
-		</div>
-	</div>
+        <div class="row">
+          <div class="col"></div>
+          <div class="col">
+            <button name="submit" value="submit" (click)="submit()"
+              class="btn btn-lg btn-primary btn-block">Next</button>
+            <!-- <button name="submit" value="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid">Next</button> -->
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
