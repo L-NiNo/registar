@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { PlayerService } from '../../services/player/player.service';
-import { MonthList } from '../../classes/months';
 import { RegexSettings } from '../../classes/regexes';
 
 @Component({
@@ -17,9 +16,8 @@ export class PersonalInfoComponent implements OnInit {
   public player;
   public view;
   public isEdit;
-  public emailPatterm = RegexSettings.email.pattern;
+  public emailPatterm = RegexSettings.email.pattern.source;
   // public email = RegexSettings.allowedCharacters.email;
-  public DOB = { days: [], months: MonthList, years: [] };
 
   constructor(
     private ps: PlayerService,
@@ -33,23 +31,7 @@ export class PersonalInfoComponent implements OnInit {
       if (data) this.view = data;
     });
     this.ps.etiting.subscribe(data => { this.isEdit = data; });
-    let days = [];
-    let months = MonthList;
-    let years = [];
-    for (let i: number = 1; i < 32 + 1; i++)
-      days.push(i);
-    this.DOB.days = days;
-    this.player.dob.day = (this.player.dob.day) ? this.player.dob.day : 0;
 
-    this.DOB.months = months;
-    this.player.dob.month = (this.player.dob.month) ? this.player.dob.month : 0;
-
-    let yr = (new Date()).getFullYear() - 29;
-    for (let y: number = yr; y < (new Date()).getFullYear(); y++)
-      years.push(y);
-
-    this.DOB.years = years;
-    this.player.dob.year = (this.player.dob.year) ? this.player.dob.year : 0;
   }
 
   ngOnInit() {
@@ -61,39 +43,4 @@ export class PersonalInfoComponent implements OnInit {
       return this.ps.changeView('REVIEW');
     this.ps.changeView('ADDY');
   }
-
-  onMonthChange(month) {
-    console.log(month);
-    if (month === '0')
-      this.player.dob.month = 0;
-    if (!month || month === '0') return;
-    let numDays = MonthList[month - 1].days;
-    let days = [];
-    for (let i: number = 1; i < numDays + 1; i++)
-      days.push(i);
-    this.DOB.days = days;
-  }
-
-  checkYear(year) {
-    if (this.player.dob.month === 2) {
-      if (this.isLeapYear(year)) {
-        this.DOB.days.push(29);
-      } else {
-        this.onMonthChange(this.player.dob.month);
-      }
-    }
-  }
-
-  isLeapYear(year) {
-    return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
-  }
-
-  onDobChange() {
-    let day = Number(this.player.dob.day);
-    let month = Number(this.player.dob.month);
-    let year = Number(this.player.dob.year);
-    if (!year || !month || !day) return this.player.dob.clearBirthday();
-    this.player.dob.setBirthday();
-  }
-
 }

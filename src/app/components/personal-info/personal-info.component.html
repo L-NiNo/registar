@@ -8,62 +8,28 @@
 				<div class="col-12">
 					<form #form="ngForm" autocomplete="off">
 						<div class="form-group">
+
 							<label for="firstName">First Name:</label>
-							<input name="firstName" [(ngModel)]="player.fname" class="form-control"  id="firstName" pattern="[a-zA-Z\s]+" maxlength="50" required/>
-						</div>
-						<div class="form-group">
+							<app-text [(model)]="player.fname" type="text" name="firstName" id="firstName"
+								required="true" min="1" max="50" pattern="[a-zA-Z\s]+" placeholder="">
+							</app-text>
+
 							<label for="lastName">Last Name:</label>
-							<input name="lastName" [(ngModel)]="player.lname" class="form-control"  id="lastName" pattern="[a-zA-Z\s]+"  maxlength="50" required/>
-						</div>
-						<div class="form-group">
+							<app-text [(model)]="player.lname" type="text" name="lastName" id="lastName" required="true"
+								min="1" max="50" pattern="[a-zA-Z\s]+" placeholder="">
+							</app-text>
+
 							<label for="email">Email:</label>
-							<app-text [(model)]="player.email" type="email" name="email" id="email" required="true" min="1" max="250" [pattern]="emailPatterm" placeholder="my_email@something.com"></app-text>
-							<!-- <input type="email" name="email" #email="ngModel" [(ngModel)]="player.email" class="form-control" required id="email" [pattern]="emailPatterm" maxlength="250"/> -->
-							<!-- <div *ngIf="email.invalid && (email.dirty || email.touched)"  class="alert alert-danger">
-								<div *ngIf="email.errors.required">Name is required.</div>
-								<div *ngIf="email.errors.minlength">Name must be at least 4 characters long.</div>
-								<div *ngIf="email.errors.forbiddenName">Name cannot be Bob.</div>
-							</div> -->
-						</div>
+							<app-text [(model)]="player.email" type="email" name="email" id="email" required="true"
+								min="1" max="250" [pattern]="emailPatterm" placeholder="my_email@something.com">
+							</app-text>
 
-						<!-- <pre>{{ email.errors | json }}</pre>
-						<pre>{{ email.value | json }}</pre> -->
-						<div class="form-group">
-							<label for="DOB">Date of Birth:</label><br>
-							<!-- <input name="DOB" [(ngModel)]="player.dob" class="form-control"  id="DOB" /> -->
-							<pre>{{player.dob.birthday}}</pre>
-							<div class="row">
-								<div class="col-12">
-									<div class="row">
-										<div class="col-4">
-											<label for="month">Month:</label>
-											<select name="month" [(ngModel)]="player.dob.month" class="form-control" (ngModelChange)="onMonthChange(player.dob.month); onDobChange();" required>
-												<option [value]='0' selected="(!player.dob.month)">-- Select --</option>
-												<option *ngFor="let month of DOB.months" [ngValue]="month.value">{{ month.name }}</option>
-											</select>
-										</div>
+							<label for="DOB">Date of Birth: {{player.dob.birthday}}</label><br>
+							<app-birthday [(model)]="player.dob"></app-birthday>
 
-										<div class="col-4">
-											<label for="day">Day:</label>
-											<select name="day" [(ngModel)]="player.dob.day" class="form-control" (ngModelChange)="onDobChange()" required>
-												<option [value]='0' selected="(!player.dob.day)">-- Select --</option>
-												<option *ngFor="let day of DOB.days" [ngValue]="day">{{ day }}</option>
-											</select>
-										</div>
-										<div class="col-4">
-											<label for="year">Year:</label>
-											<select name="year" [(ngModel)]="player.dob.year" class="form-control" (ngModelChange)="checkYear(player.dob.year); onDobChange()" required>
-												<option [value]='0' selected="(!player.dob.year)">-- Select --</option>
-												<option *ngFor="let year of DOB.years" [ngValue]="year">{{ year }}</option>
-											</select>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
+							<br>
 							<label for="grade">School Grade:</label>
-							<select name="grade" [(ngModel)]="player.grade" class="form-control"  id="grade" required>
+							<select name="grade" [(ngModel)]="player.grade" class="form-control" id="grade" required>
 								<option value=null selected="(!player.grade)">-- Select --</option>
 								<option *ngIf="player.school == 'DSMS'" value='6'>6th</option>
 								<option *ngIf="player.school == 'DSMS'" value='7'>7th</option>
@@ -78,8 +44,8 @@
 							<div class="row">
 								<div class="col"></div>
 								<div class="col">
-									<button disabled="!form.valid" name="submit" value="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block">Next</button>
-									<!-- <button name="submit" value="submit" (click)="submit()" class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid">Next</button> -->
+									<button [disabled]="!form.valid" name="submit" value="submit" (click)="submit()"
+										class="btn btn-lg btn-primary btn-block">Next</button>
 								</div>
 							</div>
 						</div>
