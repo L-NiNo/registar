@@ -39,14 +39,12 @@
 							<app-text [(model)]="player.medical.allergies" type="text" name="allergies" id="allergies" required="true"
 								min="1" max="250" pattern="[a-zA-Z0-9\\/,]+" placeholder="">
 							</app-text>
-							<!-- <i>Insert N/A if none</i> -->
 
 							<label for="conditions">Medical conditions we should know about:</label><i class="float-right">Insert N/A
 								if none</i>
 							<app-text [(model)]="player.medical.conditions" type="text" name="conditions" id="conditions"
 								required="true" min="1" max="250" pattern="[a-zA-Z0-9\\/,]+" placeholder="">
 							</app-text>
-							<!-- <i>Insert N/A if none</i> -->
 
 							<label for="medications">Daily Medications: </label><i class="float-right">Insert N/A if none</i>
 							<app-text [(model)]="player.medical.medications" type="text" name="medications" id="medications"
