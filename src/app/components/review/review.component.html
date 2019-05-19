@@ -132,18 +132,18 @@
                 </span>
               </span>
               <br>
-              <span class="col-md-4" *ngIf="player.emergency.secondary.name">
-                <span class="row">
+              <span class="col-md-4" *ngIf="player.emergency.secondary">
+                <span class="row" *ngIf="player.emergency.secondary.name">
                   <span class="col">
                     <b>Contact#2: </b><span>{{ player.emergency.secondary.name }}</span>
                   </span>
                 </span>
-                <span class="row">
+                <span class="row" *ngIf="player.emergency.secondary.relationship">
                   <span class="col">
                     <b>Relationship: </b><span>{{ player.emergency.secondary.relationship }}</span>
                   </span>
                 </span>
-                <span class="row">
+                <span class="row" *ngIf="player.emergency.secondary.phone">
                   <span class="col">
                     <b>Phone: </b><span>{{ player.emergency.secondary.phone }}</span>
                   </span>
