@@ -29,6 +29,8 @@ export class Player {
         fname?: string,
         lname?: string,
         email?: string,
+        shirt?: string,
+        shorts?: string,
         address?: Address,
         dob?: Birthdate,
         school?: string,
@@ -56,11 +58,11 @@ export class Player {
         this.guardian = guardian;
     }
 
-    private getSeasonYear(){
+    private getSeasonYear() {
         const today = new Date();
-        if(today.getMonth()+1 >= 7)
-            return today.getFullYear().toString() + '-' + (today.getFullYear()+1).toString();
-        else 
-            return (today.getFullYear()-1).toString() + '-' + today.getFullYear().toString();
+        if (today.getMonth() + 1 >= 7)
+            return today.getFullYear().toString() + '-' + (today.getFullYear() + 1).toString();
+        else
+            return (today.getFullYear() - 1).toString() + '-' + today.getFullYear().toString();
     }
 }
