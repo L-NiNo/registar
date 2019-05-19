@@ -28,6 +28,7 @@ import { MockHttpInterceptor } from './mocks/mock-http.iterceptor';
 import { ConsentItemComponent } from './components/consent-item/consent-item.component';
 
 import { environment } from '../environments/environment';
+import { BirthdayInputComponent } from './components/birthday-input/birthday-input.component';
 
 let providers: any[] = [ PlayerService, HeaderService ];
 
@@ -54,7 +55,8 @@ if(environment.useMocks)
     TextErrorComponent,
     CompleteComponent,
     ChallengeComponent,
-    ConsentItemComponent
+    ConsentItemComponent,
+    BirthdayInputComponent
   ],
   imports: [
     BrowserModule,
