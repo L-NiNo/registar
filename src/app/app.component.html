@@ -1,18 +1,18 @@
 <div class="container-fluid">
   <div *ngIf="!isRegOpen()" class="row">
     <div class="col">
-        <player-lookup *ngIf="view == 'INIT'"></player-lookup>
-        <school-selector *ngIf="view == 'SCHOOL'"></school-selector>
-        <app-national-input *ngIf="view =='NAT_ID'"></app-national-input>
-        <app-personal-info *ngIf="view =='PI'"></app-personal-info>
-        <app-address *ngIf="view =='ADDY'"></app-address>
-        <app-guardian *ngIf="view =='GUARD'"></app-guardian>
-        <app-emergency *ngIf="view =='EMERGENCY'"></app-emergency>
-        <app-medical *ngIf="view =='MED'"></app-medical>
-        <app-consents *ngIf="view =='CONSENT'"></app-consents>
-        <app-review *ngIf="view =='REVIEW'"></app-review>
-        <app-challenge *ngIf="view =='CHALLENGE'"></app-challenge>
-        <app-complete *ngIf="view =='SUCCESS'"></app-complete>
+      <player-lookup *ngIf="view == 'INIT'"></player-lookup>
+      <school-selector *ngIf="view == 'SCHOOL'"></school-selector>
+      <app-national-input *ngIf="view =='NAT_ID'"></app-national-input>
+      <app-personal-info *ngIf="view =='PI'"></app-personal-info>
+      <app-address *ngIf="view =='ADDY'"></app-address>
+      <app-guardian *ngIf="view =='GUARD'"></app-guardian>
+      <app-emergency *ngIf="view =='EMERGENCY'"></app-emergency>
+      <app-medical *ngIf="view =='MED'"></app-medical>
+      <app-consents *ngIf="view =='CONSENT'"></app-consents>
+      <app-review *ngIf="view =='REVIEW'"></app-review>
+      <app-challenge *ngIf="view =='CHALLENGE'"></app-challenge>
+      <app-complete *ngIf="view =='SUCCESS'"></app-complete>
     </div>
   </div>
   <div *ngIf="isRegOpen()">
