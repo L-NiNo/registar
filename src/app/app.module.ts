@@ -26,13 +26,13 @@ import { CompleteComponent } from './components/complete/complete.component';
 import { ChallengeComponent } from './components/challenge/challenge.component';
 import { MockHttpInterceptor } from './mocks/mock-http.iterceptor';
 import { ConsentItemComponent } from './components/consent-item/consent-item.component';
-
+import { PostalCodeDirective } from './directives/postal-code.directive';
 import { environment } from '../environments/environment';
 import { BirthdayInputComponent } from './components/birthday-input/birthday-input.component';
 
-let providers: any[] = [ PlayerService, HeaderService ];
+let providers: any[] = [PlayerService, HeaderService];
 
-if(environment.useMocks)
+if (environment.useMocks)
   providers.concat(MockHttpInterceptor);
 
 
@@ -56,7 +56,8 @@ if(environment.useMocks)
     CompleteComponent,
     ChallengeComponent,
     ConsentItemComponent,
-    BirthdayInputComponent
+    BirthdayInputComponent,
+    PostalCodeDirective
   ],
   imports: [
     BrowserModule,
