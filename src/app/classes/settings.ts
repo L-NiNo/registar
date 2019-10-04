@@ -1,4 +1,4 @@
-import { objStates, arrStates } from './States';
+import { objStates, arrStates } from './states';
 import { Months } from './months';
 const st_list = arrStates;
 export const Settings: any = {
