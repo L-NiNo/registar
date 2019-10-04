@@ -10,7 +10,6 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "preinstall": "",
     "postinstall": "ng build --aot --target=production"
   },
   "private": true,
